@@ -23,6 +23,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { LayoutComponent } from './components/layout/layout.component';
 import { HeaderComponent } from './components/navigation/header/header.component';
 import { SidenavListComponent } from './components/navigation/sidenav-list/sidenav-list.component';
+import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { SidenavListComponent } from './components/navigation/sidenav-list/siden
     MaterialModule,
     FlexLayoutModule
   ],
+  entryComponents: [PostCommentComponent],
   providers: [
     AuthService,
     AuthGuard,

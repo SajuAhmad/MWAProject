@@ -1,0 +1,76 @@
+<div class=" post-background">
+
+  <mat-card class=" post-card">
+    <mat-card-header>
+
+      <mat-card-title>
+        <h1>
+          The Making of the Best-Ever Episode of ‘Friends’
+        </h1>
+
+      </mat-card-title>
+
+    </mat-card-header>
+    <mat-card-header>
+      <div mat-card-avatar class="post-header-image"></div>
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://miro.medium.com/max/6000/1*oqYSCoPiSrVjaKnxdWR5Jw.jpeg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <div [ngClass]="{'post-descrition':true,'post-descrition-less':!isMore,'post-descrition-more':isMore}">
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </div>
+      <br />
+      <button mat-raised-button color="primary" (click)="more()">{{moreButtonTitle}}</button>
+    </mat-card-content>
+    <mat-card-actions>
+
+      <button mat-button>LIKE</button>
+      <button mat-button>UNLIKE</button>
+      <button mat-button (click)="openDialog()">COMMENT</button>
+    </mat-card-actions>
+
+    <mat-accordion [ngStyle]='{"position":"relative"}'>
+
+      <mat-expansion-panel [ngStyle]='{"position":"relative"}' (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            COMMENDS
+          </mat-panel-title>
+          <mat-panel-description>
+
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-list>
+          <mat-list-item>Item 1</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>Item 2</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>Item 3</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>Item 3</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>Item 3</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>Item 3</mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+  </mat-card>
+
+
+
+</div>
