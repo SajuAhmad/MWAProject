@@ -1,0 +1,49 @@
+.post-background {
+  background: #FFFFFF;
+  width: 100%;
+}
+
+.post-card {
+  background: #FFFFFF;
+  width: 60%;
+  margin-left: 20%;
+  min-width: 400px;
+}
+
+
+
+.post-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+@keyframes myfirst
+{
+    from {background: red;}
+    to {background: yellow;}
+}
+
+.post-descrition-less {
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+
+}
+
+.post-descrition-more {
+  -webkit-line-clamp: -1;
+}
+
+.post-descrition {
+  font-size: 18px;
+  overflow: hidden;
+  font-family: medium-content-serif-font,
+    Georgia,
+    Cambria,
+    "Times New Roman",
+    Times,
+    serif;
+  line-height: 1.58;
+  color: rgba(0, 0, 0, 0.84);
+}
