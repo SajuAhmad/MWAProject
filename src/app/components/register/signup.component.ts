@@ -6,7 +6,7 @@ import { map, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'signup-app',
-  templateUrl: 'signup.component.html',
+  templateUrl: './signup.component.html',
   providers: [SignupService]
 })
 

@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SignupService } from '../../service/signup.service';
 import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-protected',
@@ -20,6 +18,7 @@ export class HomeComponent implements OnDestroy {
   private subscription: Subscription;
 
   constructor(private service: SignupService) {
+    console.log('home component');
     this.subscription = this.service.getUserList().subscribe((data: any) => {
       this.items = data;
     });

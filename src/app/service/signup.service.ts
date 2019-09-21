@@ -1,6 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subscription } from 'rxjs';
 
 @Injectable()
 export class SignupService {
