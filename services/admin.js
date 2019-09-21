@@ -1,4 +1,5 @@
 async function getUserList(req, res, next) {
+    console.log('here');
     try {
         const result = await req.collection.find({}).toArray();
         res.status(200).json(result);

@@ -7,6 +7,7 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 const route = require('./routes/router');
+const url = require('url');
 
 
 // 2. Instantiations
@@ -42,14 +43,19 @@ app.use((req, res, next) => {
     req.collection = collection;
     next();
 });
-
 // check token for every request
 app.use((req, res, next) => {
-    if (req.url === '/api/login'
-        || req.url === '/api/insert'
-        || req.url === '/api/checkemail') {
-        console.log(req.url);
-        next();
+    const reqUrl = url.parse(req.url);
+    console.log(reqUrl.pathname);
+    if (reqUrl.pathname === '/api/login'
+        || reqUrl.pathname == '/api/insert'
+        || reqUrl.pathname == '/api/checkemail') {
+        return next();
+    } else {
+        if (req.headers.authorization)
+            next();
+        else
+            res.status(404).json({ msg: 'you are not authorized' });
     }
 });
 

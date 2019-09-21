@@ -1,3 +1,4 @@
+
 async function checkEmail(req, res, next) {
     console.log(req.query.email);
     try {

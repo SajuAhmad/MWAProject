@@ -3,7 +3,6 @@ const route = express.Router();
 const login = require('../services/login');
 const register = require('../services/register');
 const admin = require('../services/admin');
-const token = require('../services/token');
 
 route.get('/checkemail', register.checkEmail);
 route.post('/insert', register.insertUser);
