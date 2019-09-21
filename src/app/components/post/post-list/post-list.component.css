@@ -1,0 +1,13 @@
+.post-list-background {
+  background: #FFFFFF;
+  width: 100%;
+  position: relative;
+}
+
+.post-list-card {
+  background: #FFFFFF;
+  width: 60%;
+  margin-left: 20%;
+   position: relative;
+  min-width: 400px;
+}

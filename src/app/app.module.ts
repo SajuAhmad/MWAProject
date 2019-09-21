@@ -27,6 +27,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
+import { PostListComponent } from './components/post/post-list/post-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,9 @@ import { PostCommentComponent } from './components/post/post-comment/post-commen
   
     PostDetailComponent,
   
-    PostCommentComponent
+    PostCommentComponent,
+  
+    PostListComponent
   ],
   imports: [
     BrowserModule,
