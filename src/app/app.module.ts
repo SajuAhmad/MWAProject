@@ -11,20 +11,25 @@ import { HomeComponent } from './components/home/home.component';
 import { myRoutes } from './routes/app.routes';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './service/auth.service';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { TestComponent } from './components/test/test.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
     myRoutes,
+    BrowserAnimationsModule,
+    MatButtonModule, MatCheckboxModule
   ],
   providers: [
     AuthService,
