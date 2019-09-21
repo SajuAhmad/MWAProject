@@ -1,10 +1,13 @@
 const express = require('express');
 const route = express.Router();
-const service = require('../services/services');
+const login = require('../services/login');
+const register = require('../services/register');
+const admin = require('../services/admin');
+const token = require('../services/token');
 
-route.get('/checkemail', service.checkEmail);
-route.post('/insert', service.insertUser);
-route.post('/login', service.loginCheck);
-// route.get('/protected', service.getUserList);
+route.get('/checkemail', register.checkEmail);
+route.post('/insert', register.insertUser);
+route.post('/login', login.loginCheck);
+route.get('/protected', admin.getUserList);
 
 module.exports = route;
