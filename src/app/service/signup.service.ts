@@ -13,6 +13,11 @@ export class SignupService {
     return this.http.get('http://localhost:1000/api/checkemail', { params: { email } });
   }
 
+  checkUsername(username: string) {
+    console.log('service checkUsername()');
+    return this.http.get('http://localhost:1000/api/checkusername', { params: { username } });
+  }
+
   insertUser(data: Object) {
     console.log('service insertUser()');
     return this.http.post('http://localhost:1000/api/insert', data);
