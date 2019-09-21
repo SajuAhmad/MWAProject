@@ -24,6 +24,11 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { HeaderComponent } from './components/navigation/header/header.component';
 import { SidenavListComponent } from './components/navigation/sidenav-list/sidenav-list.component';
 import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
+import { PostDetailComponent } from './components/post/post-detail/post-detail.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -35,6 +40,8 @@ import { PostCommentComponent } from './components/post/post-comment/post-commen
     LayoutComponent,
     HeaderComponent,
     SidenavListComponent,
+    PostCommentComponent,
+    PostDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -47,8 +54,13 @@ import { PostCommentComponent } from './components/post/post-comment/post-commen
     MatFormFieldModule,
     MatInputModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatCardModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatDialogModule
   ],
+
   entryComponents: [PostCommentComponent],
   providers: [
     AuthService,
