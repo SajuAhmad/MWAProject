@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SignupService } from './service/signup.service';
+import { SignupService } from '../../service/signup.service';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JsonPipe } from '@angular/common';
@@ -15,7 +15,7 @@ import { JsonPipe } from '@angular/common';
   providers: [SignupService]
 })
 
-export class ProtectedComponent implements OnDestroy {
+export class HomeComponent implements OnDestroy {
   public items: Object;
   private subscription: Subscription;
 

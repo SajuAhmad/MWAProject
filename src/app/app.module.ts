@@ -1,16 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './login/signup.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/register/signup.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './service/token.interceptor';
-import { ProtectedComponent } from './protected.component';
-import { myRoutes } from './app.routes';
-import { AuthGuard } from './service/auth.guard';
+import { TokenInterceptor } from './interceptors/token.interceptor';
+import { HomeComponent } from './components/home/home.component';
+import { myRoutes } from './routes/app.routes';
+import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './service/auth.service';
 
 
@@ -19,7 +18,7 @@ import { AuthService } from './service/auth.service';
     AppComponent,
     LoginComponent,
     SignupComponent,
-    ProtectedComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,

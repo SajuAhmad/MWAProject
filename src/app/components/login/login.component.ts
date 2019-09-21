@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SignupService } from '../service/signup.service';
+import { SignupService } from '../../service/signup.service';
 import { Subscription } from 'rxjs';
 
 @Component({
