@@ -1,33 +1,19 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SignupService } from '../../service/signup.service';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-protected',
-  template: `
-  <br/>
-    <div *ngFor="let item of items | keyvalue">
-      {{item.key}}: {{item.value.username}}
-    </div>
-  `,
-  providers: [SignupService]
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
+export class HomeComponent implements OnInit {
 
-export class HomeComponent implements OnDestroy {
-  public items: Object;
-  private subscription: Subscription;
+  constructor() { }
 
-  constructor(private service: SignupService) {
-    console.log('home component');
-    this.subscription = this.service.getUserList().subscribe((data: any) => {
-      this.items = data;
-    });
+  ngOnInit() {
   }
 
-  ngOnDestroy() {
-    console.log('protected onDestroy');
-    if (this.subscription !== undefined) {
-      this.subscription.unsubscribe();
-    }
+  public executeSelectedChange = (event) => {
+    console.log(event);
   }
+
 }

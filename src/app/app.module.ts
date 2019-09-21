@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { MaterialModule } from './modules/material/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/register/signup.component';
@@ -17,13 +20,20 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { TestComponent } from './components/test/test.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { LayoutComponent } from './components/layout/layout.component';
+import { HeaderComponent } from './components/navigation/header/header.component';
+import { SidenavListComponent } from './components/navigation/sidenav-list/sidenav-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    TestComponent
+    TestComponent,
+    LayoutComponent,
+    HeaderComponent,
+    SidenavListComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +41,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     HttpClientModule,
     myRoutes,
     BrowserAnimationsModule,
-    MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [
     AuthService,
