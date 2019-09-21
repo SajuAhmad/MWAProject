@@ -6,25 +6,21 @@ const helmet = require('helmet');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
-const route = require('./routes/router');
-const url = require('url');
-
+const router = require('./routes/router')
+const privates = require('./privates')
 
 // 2. Instantiations
 const app = express();
+
 // ###############################
-// please copy past the url i sent you, when you push make sure you removed the url
-const dbUrl = 'mongodb+srv://mwaproject:WIAawD9Q7leGEacq@cluster0-mqisf.mongodb.net/test?retryWrites=true&w=majority';
-// ###############################
-const client = new MongoClient(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
-// db user: mwaproject, pass: WIAawD9Q7leGEacq
+const client = new MongoClient(privates.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const logPath = fs.createWriteStream(path.join(__dirname + 'access.log'), { flags: 'a' });
 let collection = null;
 client.connect((err) => {
     try {
         if (err) throw err;
-        const db = client.db('final');
-        collection = db.collection('login')
+        const db = client.db(privates.DATABASE_NAME);
+        collection = db.collection(privates.USERS_COLLECTION)
         console.log('connected to db...');
     } catch (e) {
         console.log(e);
@@ -60,7 +56,7 @@ app.use((req, res, next) => {
 });
 
 // 5. Routers
-app.use('/api', route);
+app.use('/api', router);
 
 // 6. Error Handlers
 app.use((err, req, res, next) => {
