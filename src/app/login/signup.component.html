@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10">
+      <h1>Signup Form</h1>
+      <hr>
+      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        Username:<br>
+        <input formControlName="username" type="text">
+        <div *ngIf="signUpForm.get('username').hasError('invalid')">Invalid Name</div>
+        <br>
+        Email:<br>
+        <input formControlName="email" type="text">
+        <!--span *ngIf="!signUpForm.get('email').valid">Invalid Email</!--span>-->
+        <span *ngIf="signUpForm.get('email').errors">Invalid Email!</span>
+
+        <br>
+        Password:<br>
+        <input formControlName="password" type="password">
+        <div *ngIf="!signUpForm.get('password').valid">Length > 6</div>
+        <br><br>
+        <input [disabled]="!signUpForm.valid" type="submit" value="Login">
+      </form>
+      <hr>
+    </div>
+  </div>
+</div>
