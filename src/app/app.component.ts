@@ -10,7 +10,8 @@ import { Component } from '@angular/core';
             <hr>
             <a [routerLink]="['login']">Login</a> |
             <a [routerLink]="['signup']">Signup</a> |
-            <a [routerLink]="['client','protected']">Get User List</a>
+            <a [routerLink]="['client','protected']">Get User List</a>|
+           <a [routerLink]="['test']">  Test </a>
             <hr>
             <router-outlet></router-outlet>
         </div>

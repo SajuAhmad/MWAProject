@@ -16,6 +16,7 @@ export class SignupComponent implements OnDestroy, OnInit {
   private subscription2: Subscription;
 
   constructor(private fb: FormBuilder, private chkSignup: SignupService) {
+    const me = this;
     this.signUpForm = fb.group({
       username: ['', [Validators.required]],
       email: ['saju@example.com',
@@ -42,6 +43,7 @@ export class SignupComponent implements OnDestroy, OnInit {
   asyncEmailValidator(control: FormControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
     return this.chkSignup.checkEmail(control.value)
       .pipe(debounceTime(200), map((emailExists: any) => {
+        console.log("sds")
         if (emailExists.isExist === true) {
           return {
             isExist: true
