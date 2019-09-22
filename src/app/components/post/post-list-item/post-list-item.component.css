@@ -1,0 +1,55 @@
+.item {}
+
+.left-part {
+  margin-top: 20px;
+  float: left;
+  width: 75%;
+}
+
+.left-part .title {
+  color: #2f2f2f;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  font-family: -apple-system,
+    SF UI Display,
+    Arial,
+    PingFang SC,
+    Hiragino Sans GB,
+    Microsoft YaHei,
+    WenQuanYi Micro Hei,
+    sans-serif;
+     -webkit-line-clamp: 1;
+     -webkit-box-orient: vertical;
+     text-overflow: ellipsis;
+     display: -webkit-box;
+}
+
+.left-part .desc {
+  font-size: 13px;
+  line-height: 24px;
+  color: #999;
+   -webkit-line-clamp: 3;
+   -webkit-box-orient: vertical;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   overflow: hidden;
+}
+
+.right-part {
+  float: left;
+  width: 25%;
+}
+
+.right-part img {
+  position: absolute;
+  height: 100px;
+  width: 150px;
+  overflow: hidden;
+  margin-top: 18px;
+  margin-left: 20%;
+  /* object-fit: fill; */
+
+  text-align: -webkit-match-parent;
+  /* margin-top: -50px; */
+}

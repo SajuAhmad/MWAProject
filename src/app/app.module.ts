@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { MaterialModule } from './modules/material/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/register/signup.component';
@@ -17,17 +20,18 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { TestComponent } from './components/test/test.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatCardModule } from '@angular/material/card';
+import { LayoutComponent } from './components/layout/layout.component';
+import { HeaderComponent } from './components/navigation/header/header.component';
+import { SidenavListComponent } from './components/navigation/sidenav-list/sidenav-list.component';
 import { PostDetailComponent } from './components/post/post-detail/post-detail.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatBadgeModule } from '@angular/material/badge';
+import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
 import { PostListComponent } from './components/post/post-list/post-list.component';
+import { PostListItemComponent } from './components/post/post-list-item/post-list-item.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,12 +39,15 @@ import { PostListComponent } from './components/post/post-list/post-list.compone
     SignupComponent,
     HomeComponent,
     TestComponent,
-  
     PostDetailComponent,
-  
     PostCommentComponent,
-  
-    PostListComponent
+    PostListComponent,
+    LayoutComponent,
+    HeaderComponent,
+    SidenavListComponent,
+    PostCommentComponent,
+    PostDetailComponent,
+    PostListItemComponent
   ],
   imports: [
     BrowserModule,
@@ -52,16 +59,16 @@ import { PostListComponent } from './components/post/post-list/post-list.compone
     MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule,
-    MatToolbarModule,
+    MaterialModule,
+    FlexLayoutModule,
     MatCardModule,
-    MatBadgeModule,
     MatDividerModule,
-    MatListModule,
     MatExpansionModule,
+    MatDialogModule,
     MatIconModule
   ],
-  entryComponents:[PostCommentComponent],
+
+  entryComponents: [PostCommentComponent],
   providers: [
     AuthService,
     AuthGuard,

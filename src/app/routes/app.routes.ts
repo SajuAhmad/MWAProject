@@ -12,7 +12,8 @@ const MY_ROUTES: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'client/protected', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'test', component: PostListComponent },
+  { path: 'post/list', component: PostListComponent },
+  { path: 'post/detail', component: PostDetailComponent },
   { path: '**', redirectTo: '/' }
 ];
 

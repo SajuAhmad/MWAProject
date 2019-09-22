@@ -1,12 +1,13 @@
 <div class="post-list-background">
 
   <mat-card class=" post-list-card">
-    <mat-list>
-      <mat-list-item>Item 1</mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>Item 2</mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>Item 3</mat-list-item>
+    <mat-list >
+      <mat-list-item *ngFor="let name of names; let num = index" [ngStyle]="{'height':'auto','margin-bottom':'10px'}">
+        <app-post-list-item></app-post-list-item>
+           <mat-divider></mat-divider>
+      </mat-list-item>
+     
+
     </mat-list>
 
   </mat-card>
