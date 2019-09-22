@@ -13,6 +13,11 @@ const jwt = require('jsonwebtoken');
 // 2. Instantiations
 const app = express();
 
+
+//set
+app.enable('case sensitive routing');
+app.set('strict routing', true);
+
 // ###############################
 const client = new MongoClient(privates.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const logPath = fs.createWriteStream(path.join(__dirname + 'access.log'), { flags: 'a' });
