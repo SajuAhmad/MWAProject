@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import {
   FormControl, Validators, FormGroup,
   FormBuilder,
@@ -24,7 +25,7 @@ export class PostCreateComponent implements OnInit {
   // desc = new FormControl('', [Validators.required]);
   height = '80px';
   constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<PostCreateComponent>,
-    public postService: PostService
+    public postService: PostService, private route: ActivatedRoute
   ) {
 
     this.myForm = formBuilder.group({
@@ -50,10 +51,17 @@ export class PostCreateComponent implements OnInit {
     };
 
     this.subscription = this.postService.createPost(obj).subscribe(data => {
-      console.log(data);
+
       if (data['status'] == 200) {
         this.dialogRef.close();
-        this.router.navigate(['post','list']);
+        if (window.location.href == "http://localhost:4200/post") {
+          window.location.reload();
+        } else {
+          this.router.navigate(['post']);
+        }
+        console.log(window.location.href);
+
+
       }
     })
 
