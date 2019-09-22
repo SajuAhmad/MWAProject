@@ -11,7 +11,7 @@ async function loginCheck(req, res, next) {
             const isCorrect = await bcrypt.compare(req.body.password, hash);
             console.log(isCorrect);
             if (isCorrect) {
-                const token = jwt.sign({ userID: result._id }, 'todo-app-super-shared-secret', { expiresIn: '2h' });
+                const token = jwt.sign({ role: result[0].role }, 'todo-app-super-shared-secret', { expiresIn: '2h' });
                 res.status(200).json({ token });
             } else {
                 res.status(200).json({ "msg": "invalid user" });
