@@ -10,13 +10,16 @@
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
     <ul fxLayout fxLayoutGap="15px" class="navigation-items">
       <li>
-        <a [routerLink]="['logout']">Logout</a>
+        <!-- <a isLoggedin [routerLink]="['logout']">Logout</a> -->
+        <a *ngIf='isLogedin()' [routerLink]="['logout']">Logout</a>
       </li>
       <li>
-        <a [routerLink]="['login']">Login</a>
+        <!-- <a isVisitor [routerLink]="['login']">Login</a> -->
+        <a *ngIf='isVisitor()' [routerLink]="['login']">Login</a>
       </li>
       <li>
-        <a [routerLink]="['users']">User List</a>
+        <a *ngIf='isAdmin()' [routerLink]="['users']">User List</a>
+        <!-- <a [isAdmin]="userType()" [routerLink]="['users']">User List</a> -->
       </li>
     </ul>
   </div>

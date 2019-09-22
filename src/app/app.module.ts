@@ -33,6 +33,12 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
 import { PostListComponent } from './components/post/post-list/post-list.component';
 import { MatIconModule } from '@angular/material';
+import { PostListItemComponent } from './components/post/post-list-item/post-list-item.component';
+import { AdminDirective } from './directives/admin.directive';
+import { TokenGuard } from './guards/tokenguard.guard';
+import { UserDirective } from './directives/user.directive';
+import { LoginCheckDirective } from './directives/login-check.directive';
+import { VisitorDirective } from './directives/visitor.directive';
 
 @NgModule({
   declarations: [
@@ -50,7 +56,12 @@ import { MatIconModule } from '@angular/material';
     PostCommentComponent,
     PostDetailComponent,
     UserlistComponent,
-    LogoutComponent
+    LogoutComponent,
+    PostListItemComponent,
+    AdminDirective,
+    UserDirective,
+    LoginCheckDirective,
+    VisitorDirective
   ],
   imports: [
     BrowserModule,
@@ -79,7 +90,8 @@ import { MatIconModule } from '@angular/material';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    TokenGuard
   ],
   bootstrap: [AppComponent]
 })
