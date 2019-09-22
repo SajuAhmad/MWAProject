@@ -29,6 +29,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { UserlistComponent } from './components/userlist/userlist.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     HeaderComponent,
     SidenavListComponent,
     PostCommentComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    UserlistComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
