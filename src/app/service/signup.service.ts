@@ -8,9 +8,9 @@ export class SignupService {
     console.log('service constructor');
   }
 
-  checkEmail(email: string) {
+  isExist(data: Object) {
     console.log('service checkEmail()');
-    return this.http.get('http://localhost:1000/api/checkemail', { params: { email } });
+    return this.http.post('http://localhost:1000/api/check', { data });
   }
 
   checkUsername(username: string) {
@@ -24,8 +24,7 @@ export class SignupService {
   }
 
   loginCheck(data: Object) {
-    let myParams = new URLSearchParams();
-    console.log('service checkEmail()');
+    console.log('service loginCheck()');
     return this.http.post('http://localhost:1000/api/login', data);
   }
 

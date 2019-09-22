@@ -18,6 +18,7 @@ import { Subscription } from 'rxjs';
               <input formControlName="password" type="password">
               <br><br>
               <input [disabled]="!loginForm.valid" type="submit" value="Login">
+              <a routerLink="/signup" class="btn btn-link">Register</a>
             </form>
           <hr>
       </div>
