@@ -41,11 +41,12 @@ app.use((req, res, next) => {
 });
 // check token for every request
 app.use((req, res, next) => {
-    const reqUrl = url.parse(req.url);
-    console.log(reqUrl.pathname);
-    if (reqUrl.pathname === '/api/login'
-        || reqUrl.pathname == '/api/insert'
-        || reqUrl.pathname == '/api/checkemail') {
+    console.log(req.url);
+    // const reqUrl = url.parse(req.url);
+    // console.log(reqUrl.pathname);
+    if (req.url == '/api/login'
+        || req.url == '/api/insert'
+        || req.url == '/api/check') {
         return next();
     } else {
         if (req.headers.authorization)

@@ -1,8 +1,9 @@
 
-async function checkEmail(req, res, next) {
-    console.log(req.query.email);
+async function check(req, res, next) {
+    console.log(req.body.data);
     try {
-        const data = req.collection.find({ email: req.query.email });
+        const query = req.body;
+        const data = req.collection.find({ query });
         const result = await data.toArray();
         if (result.length > 0) {
             res.status(200).json({ isExist: true });
@@ -31,4 +32,4 @@ async function insertUser(req, res, next) {
     });
 }
 
-module.exports = { checkEmail, insertUser }
+module.exports = { check, insertUser }
