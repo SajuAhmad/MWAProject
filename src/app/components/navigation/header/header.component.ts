@@ -1,5 +1,7 @@
 import { Component, Output, EventEmitter, ElementRef, Renderer2 } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
+import { PostCreateComponent } from '../../post/post-create/post-create.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +13,23 @@ export class HeaderComponent {
 
   @Output() public sidenavToggle = new EventEmitter();
 
-  constructor(private atuhService: AuthService) { }
+  constructor(private atuhService: AuthService, public dialog: MatDialog) { }
+
+  ngOnInit() {
+  }
+
+  openPostDialog(): void {
+    const dialogRef = this.dialog.open(PostCreateComponent, {
+      width: '800px',
+      height: 'auto',
+      // data: { name: this.name, animal: this.animal }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+  }
 
   public onToggleSidenav = () => {
     this.sidenavToggle.emit();

@@ -1,0 +1,38 @@
+<!-- <div class="example-container"> -->
+
+<form [formGroup]="myForm" class="post-container" (ngSubmit)="onPost()">
+  <label>Create a new post</label>
+  <hr />
+  <mat-form-field>
+    <input matInput placeholder="Enter your title" autocomplete="off" formControlName="title" required>
+    <mat-error *ngIf="myForm.get('title').invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea [appTextareaAutosize]="height" matInput placeholder="Enter your desc" autocomplete="off"
+      formControlName="desc" required></textarea>
+
+    <mat-error *ngIf="myForm.get('desc').invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Input a img url" autocomplete="off" formControlName="img">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Select" formControlName="category" required>
+      <mat-option value="option">MWA</mat-option>
+      <mat-option value="option">WAA</mat-option>
+      <mat-option value="option">WAP</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+ 
+    <button type="submit" mat-flat-button color="primary" [disabled]="!myForm.valid">POST</button>
+    <br />
+    <button (click)="cancel()" mat-flat-button color="accent">Cancel</button>
+  
+
+</form>
+
+<!-- </div> -->

@@ -4,9 +4,17 @@
       <mat-icon>menu</mat-icon>
     </button>
   </div>
-  <div>
-    <a [routerLink]="['home']">Home</a>
+
+  <div fxFlex fxLayout fxLayoutAlign="start" fxHide.xs>
+    <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+
+      <a [routerLink]="['home']">Home</a>
+      <li>
+        <button mat-raised-button color="warn" (click)="openPostDialog()">POST</button>
+      </li>
+    </ul>
   </div>
+
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
     <ul fxLayout fxLayoutGap="15px" class="navigation-items">
       <li>
@@ -21,6 +29,7 @@
         <a *ngIf='isAdmin()' [routerLink]="['users']">User List</a>
         <!-- <a [isAdmin]="userType()" [routerLink]="['users']">User List</a> -->
       </li>
+
     </ul>
   </div>
 </mat-toolbar>
