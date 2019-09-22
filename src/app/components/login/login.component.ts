@@ -30,7 +30,7 @@ import { Subscription } from 'rxjs';
   styles: []
 })
 
-export class LoginComponent implements OnDestroy {
+export class LoginComponent implements OnDestroy, OnDestroy {
   public loginForm: FormGroup;
   private subscription: Subscription;
 
