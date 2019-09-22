@@ -16,17 +16,23 @@ const app = express();
 // ###############################
 const client = new MongoClient(privates.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const logPath = fs.createWriteStream(path.join(__dirname + 'access.log'), { flags: 'a' });
-let collection = null;
-client.connect((err) => {
-    try {
-        if (err) throw err;
-        const db = client.db(privates.DATABASE_NAME);
-        collection = db.collection(privates.USERS_COLLECTION)
-        console.log('connected to db...');
-    } catch (e) {
-        console.log(e);
-    }
-});
+let users_col=null;
+let posts_col=null;
+
+function connectDB() {
+    client.connect((err) => {
+        try {
+            if (err) throw err;
+            db = client.db(privates.DATABASE_NAME);
+            users_col = db.collection(privates.USERS_COLLECTION)
+            posts_col = db.collection(privates.POSTS_COLLECTION)
+            console.log('Connected to database '+privates.DATABASE_NAME);
+        } catch (e) {
+            console.log('Connection Error:'+e);
+        }
+    });
+} 
+connectDB()//first connection
 
 // 3. Configurations
 const port = process.env.port || 1000;
@@ -37,12 +43,16 @@ app.use(cors());
 app.use(morgan('dev', { stream: logPath }));
 app.use(express.json());
 app.use((req, res, next) => {
-    req.collection = collection;
+    if (!client.isConnected()) {
+        connectDB()
+    } 
+    req.users_col = users_col;
+    req.posts_col = posts_col;
     next();
 });
 // check token for every request
 app.use(async (req, res, next) => {
-    console.log(req.url);
+    //console.log(req.url);
     // const reqUrl = url.parse(req.url);
     // console.log(reqUrl.pathname);
     if (req.url == '/api/login'
@@ -50,7 +60,7 @@ app.use(async (req, res, next) => {
         || req.url == '/api/check') {
         return next();
     } else {
-        if (req.headers.authorization && jwt.verify(req.headers.authorization, 'todo-app-super-shared-secret')) {
+        if (req.headers.authorization && jwt.verify(req.headers.authorization, 'blog-app-super-shared-secret')) {
             next();
         }
         else
