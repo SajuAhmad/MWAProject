@@ -45,6 +45,7 @@ export class HeaderComponent {
   }
 
   isAdmin() {
+    console.log(this.atuhService.getRole());
     if (this.atuhService.getRole() !== 'null' && this.atuhService.getRole() !== 'admin') {
       return false
     } else {
