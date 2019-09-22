@@ -28,13 +28,22 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
+
+import { MatSelectModule } from '@angular/material/select';
+import { PostListItemComponent } from './components/post/post-list-item/post-list-item.component';
+import { PostCreateComponent } from './components/post/post-create/post-create.component';
 import { UserlistComponent } from './components/userlist/userlist.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
 import { PostListComponent } from './components/post/post-list/post-list.component';
 import { MatIconModule } from '@angular/material';
-import { PostListItemComponent } from './components/post/post-list-item/post-list-item.component';
 import { DialogComponent } from './components/dialog.component';
+import { AdminDirective } from './directives/admin.directive';
+import { TokenGuard } from './guards/tokenguard.guard';
+import { UserDirective } from './directives/user.directive';
+import { LoginCheckDirective } from './directives/login-check.directive';
+import { VisitorDirective } from './directives/visitor.directive';
+import { TextareaAutosizeDirective } from './directives/textarea-autosize.directive';
 
 @NgModule({
   declarations: [
@@ -54,7 +63,16 @@ import { DialogComponent } from './components/dialog.component';
     PostListItemComponent,
     UserlistComponent,
     LogoutComponent,
-    DialogComponent
+    DialogComponent,
+    PostCreateComponent,
+    TextareaAutosizeDirective,
+    UserlistComponent,
+    LogoutComponent,
+    PostListItemComponent,
+    AdminDirective,
+    UserDirective,
+    LoginCheckDirective,
+    VisitorDirective
   ],
   imports: [
     BrowserModule,
@@ -72,9 +90,11 @@ import { DialogComponent } from './components/dialog.component';
     MatDividerModule,
     MatExpansionModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule,
   ],
-  entryComponents: [PostCommentComponent, DialogComponent],
+
+  entryComponents: [PostCommentComponent, PostCreateComponent, DialogComponent],
   providers: [
     AuthService,
     AuthGuard,
@@ -82,7 +102,8 @@ import { DialogComponent } from './components/dialog.component';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    TokenGuard
   ],
   bootstrap: [AppComponent]
 })

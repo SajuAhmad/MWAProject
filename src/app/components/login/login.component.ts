@@ -31,7 +31,7 @@ import { AuthService } from 'src/app/service/auth.service';
   styles: []
 })
 
-export class LoginComponent implements OnDestroy {
+export class LoginComponent implements OnDestroy, OnDestroy {
   public loginForm: FormGroup;
   private subscription: Subscription;
 
