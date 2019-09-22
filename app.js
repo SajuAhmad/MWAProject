@@ -8,6 +8,7 @@ const path = require('path');
 const fs = require('fs');
 const router = require('./routes/router')
 const privates = require('./privates')
+const jwt = require('jsonwebtoken');
 
 // 2. Instantiations
 const app = express();
@@ -40,7 +41,7 @@ app.use((req, res, next) => {
     next();
 });
 // check token for every request
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
     console.log(req.url);
     // const reqUrl = url.parse(req.url);
     // console.log(reqUrl.pathname);
@@ -49,8 +50,9 @@ app.use((req, res, next) => {
         || req.url == '/api/check') {
         return next();
     } else {
-        if (req.headers.authorization)
+        if (req.headers.authorization && jwt.verify(req.headers.authorization, 'todo-app-super-shared-secret')) {
             next();
+        }
         else
             res.status(404).json({ msg: 'you are not authorized' });
     }
