@@ -29,9 +29,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
 import { PostListComponent } from './components/post/post-list/post-list.component';
 import { PostListItemComponent } from './components/post/post-list-item/post-list-item.component';
+import { PostCreateComponent } from './components/post/post-create/post-create.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,8 @@ import { PostListItemComponent } from './components/post/post-list-item/post-lis
     SidenavListComponent,
     PostCommentComponent,
     PostDetailComponent,
-    PostListItemComponent
+    PostListItemComponent,
+    PostCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -65,10 +68,11 @@ import { PostListItemComponent } from './components/post/post-list-item/post-lis
     MatDividerModule,
     MatExpansionModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   ],
 
-  entryComponents: [PostCommentComponent],
+  entryComponents: [PostCommentComponent,PostCreateComponent],
   providers: [
     AuthService,
     AuthGuard,

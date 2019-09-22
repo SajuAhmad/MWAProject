@@ -6,15 +6,19 @@
   </div>
   <div>
     <a routerLink="/home">Home</a>
-  </div>
+    </div>
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
     <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+      <li>
+        <button mat-raised-button color="warn" (click)="openPostDialog()">POST</button>
+      </li>
       <li>
         <a [routerLink]="['login']">Login</a>
       </li>
       <li>
         <a [routerLink]="['client','protected']">User List</a>
       </li>
+      
     </ul>
   </div>
 </mat-toolbar>

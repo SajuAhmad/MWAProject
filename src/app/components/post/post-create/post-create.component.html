@@ -1,0 +1,27 @@
+<div class="example-container">
+  <label>Create A new post</label>
+  <hr />
+  <mat-form-field>
+    <input matInput placeholder="Enter your title" autocomplete="off" [formControl]="title" required>
+    <mat-error *ngIf="title.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea (keyup)="textAreaAdjust($event,this)" [ngStyle]="{'overflow':hidden}" matInput
+      placeholder="Enter your desc" autocomplete="off" [formControl]="desc"></textarea>
+
+    <mat-error *ngIf="desc.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Input a img url" autocomplete="off" [formControl]="img">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Select">
+      <mat-option value="option">MWA</mat-option>
+      <mat-option value="option">WAA</mat-option>
+      <mat-option value="option">WAP</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

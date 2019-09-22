@@ -1,0 +1,9 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* >* all It will target elements which are DIRECT children of a particular element. */
+.example-container>* {
+  width: 100%;
+}
