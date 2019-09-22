@@ -60,7 +60,7 @@ app.use(async (req, res, next) => {
         || req.url == '/api/check') {
         return next();
     } else {
-        if (req.headers.authorization && jwt.verify(req.headers.authorization, 'blog-app-super-shared-secret')) {
+        if (req.headers.authorization && jwt.verify(req.headers.authorization, 'very secret')) {
             next();
         }
         else
