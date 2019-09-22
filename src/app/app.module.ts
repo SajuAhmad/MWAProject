@@ -23,7 +23,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { LayoutComponent } from './components/layout/layout.component';
 import { HeaderComponent } from './components/navigation/header/header.component';
 import { SidenavListComponent } from './components/navigation/sidenav-list/sidenav-list.component';
-import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
 import { PostDetailComponent } from './components/post/post-detail/post-detail.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -31,6 +30,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { UserlistComponent } from './components/userlist/userlist.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
+import { PostListComponent } from './components/post/post-list/post-list.component';
+import { MatIconModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,9 @@ import { LogoutComponent } from './components/logout/logout.component';
     SignupComponent,
     HomeComponent,
     TestComponent,
+    PostDetailComponent,
+    PostCommentComponent,
+    PostListComponent,
     LayoutComponent,
     HeaderComponent,
     SidenavListComponent,
@@ -62,7 +67,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     MatCardModule,
     MatDividerModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule
   ],
 
   entryComponents: [PostCommentComponent],

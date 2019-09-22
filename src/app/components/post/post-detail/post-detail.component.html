@@ -12,13 +12,15 @@
 
     </mat-card-header>
     <mat-card-header>
-      <div mat-card-avatar class="post-header-image"></div>
+      <div [ngStyle]="{'margin-left':'2%','margin-right':'2%'}" mat-card-avatar class="post-header-image"></div>
       <mat-card-title>Shiba Inu</mat-card-title>
       <mat-card-subtitle>Dog Breed</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="https://miro.medium.com/max/6000/1*oqYSCoPiSrVjaKnxdWR5Jw.jpeg" alt="Photo of a Shiba Inu">
+    <img [ngStyle]="{'width':'95%','margin-left':'2%'}" mat-card-image
+      src="https://miro.medium.com/max/6000/1*oqYSCoPiSrVjaKnxdWR5Jw.jpeg" alt="Photo of a Shiba Inu">
     <mat-card-content>
-      <div [ngClass]="{'post-descrition':true,'post-descrition-less':!isMore,'post-descrition-more':isMore}">
+      <div [ngStyle]="{'margin-left':'2%','margin-right':'2%'}"
+         [ngClass]="{'post-descrition':true,'post-descrition-less':!isMore,'post-descrition-more':isMore}">
         The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
         bred for hunting.
@@ -30,16 +32,18 @@
         bred for hunting.
       </div>
       <br />
-      <button mat-raised-button color="primary" (click)="more()">{{moreButtonTitle}}</button>
+      <button
+      [ngStyle]="{'margin-left':'2%'}"
+      mat-raised-button color="primary" (click)="more()">{{moreButtonTitle}}</button>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions [ngStyle]="{'margin-left':'2%'}">
 
       <button mat-button>LIKE</button>
       <button mat-button>UNLIKE</button>
       <button mat-button (click)="openDialog()">COMMENT</button>
     </mat-card-actions>
 
-    <mat-accordion [ngStyle]='{"position":"relative"}'>
+    <mat-accordion [ngStyle]="{'position':'relative','margin-left':'2%','margin-right':'2%'}">
 
       <mat-expansion-panel [ngStyle]='{"position":"relative"}' (opened)="panelOpenState = true"
         (closed)="panelOpenState = false">
