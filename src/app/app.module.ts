@@ -33,6 +33,8 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
 import { PostListComponent } from './components/post/post-list/post-list.component';
 import { MatIconModule } from '@angular/material';
+import { PostListItemComponent } from './components/post/post-list-item/post-list-item.component';
+import { DialogComponent } from './components/dialog.component';
 
 @NgModule({
   declarations: [
@@ -49,8 +51,10 @@ import { MatIconModule } from '@angular/material';
     SidenavListComponent,
     PostCommentComponent,
     PostDetailComponent,
+    PostListItemComponent,
     UserlistComponent,
-    LogoutComponent
+    LogoutComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -70,8 +74,7 @@ import { MatIconModule } from '@angular/material';
     MatDialogModule,
     MatIconModule
   ],
-
-  entryComponents: [PostCommentComponent],
+  entryComponents: [PostCommentComponent, DialogComponent],
   providers: [
     AuthService,
     AuthGuard,

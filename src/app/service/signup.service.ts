@@ -8,27 +8,22 @@ export class SignupService {
   }
 
   isExist(data: Object) {
-    console.log('service checkEmail()');
-    return this.http.post('http://localhost:1000/api/check', { data });
-  }
-
-  checkUsername(username: string) {
-    console.log('service checkUsername()');
-    return this.http.get('http://localhost:1000/api/checkusername', { params: { username } });
+    console.debug('SignupService.isExist():'+{data});
+    return this.http.post('http://localhost:1000/api/check', data );
   }
 
   insertUser(data: Object) {
-    console.log('service insertUser()');
+    console.debug('SignupService.insertUser():'+data);
     return this.http.post('http://localhost:1000/api/insert', data);
   }
 
   loginCheck(data: Object) {
-    console.log('service loginCheck()');
+    console.debug('SignupService.loginCheck():'+data);
     return this.http.post('http://localhost:1000/api/login', data);
   }
 
   getUserList() {
-    console.log('service getUserList()');
+    console.debug('SignupService.getUserList()');
     return this.http.get('http://localhost:1000/api/protected');
   }
 
