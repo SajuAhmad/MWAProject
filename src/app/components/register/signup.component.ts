@@ -128,15 +128,15 @@ export class SignupComponent implements OnInit {
   /*
     onSubmit() {
       this.submitted = true;
-  
+
       // reset alerts on submit
       this.alertService.clear();
-  
+
       // stop here if form is invalid
       if (this.registerForm.invalid) {
         return;
       }
-  
+
       this.loading = true;
       this.userService.register(this.registerForm.value)
         .pipe(first())
@@ -152,15 +152,15 @@ export class SignupComponent implements OnInit {
     }*/
   onSubmit(): void {
     console.log('signup onsubmit');
-    this.subscription1 = this.chkSignup.checkEmail(this.registerForm.get('email').value).subscribe((data: any) => {
+    this.subscription1 = this.chkSignup.isExist(this.registerForm.get('email').value).subscribe((data: any) => {
       if (data.isExist !== true) {
-        console.error('SignupComponent.onSubmit().true:'+data);
+        console.error('SignupComponent.onSubmit().true:' + data);
         this.subscription2 = this.chkSignup.insertUser(this.registerForm.value).subscribe(data => {
-          console.log('chkSignup.insertUser():'+data)
-        
+          console.log('chkSignup.insertUser():' + data)
+
         });
-      }else{
-        console.error('SignupComponent.onSubmit().else:'+data);
+      } else {
+        console.error('SignupComponent.onSubmit().else:' + data);
       }
     });
 
@@ -174,7 +174,7 @@ export class SignupComponent implements OnInit {
 
   asyncEmailValidator(control: FormControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
     console.log('SignupComponent.asyncEmailValidator().control.value:' + control.value)
-    return this.chkSignup.checkEmail(control.value)
+    return this.chkSignup.isExist(control.value)
       .pipe(debounceTime(200), map((emailExists: any) => {
 
         if (emailExists.isExist === true) {
@@ -190,7 +190,7 @@ export class SignupComponent implements OnInit {
 
   asyncUsernameValidator(control: FormControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
     console.log('SignupComponent.asyncUsernameValidator().control.value:' + control.value)
-    return this.chkSignup.checkUsername(control.value)
+    return this.chkSignup.isExist(control.value)
       .pipe(debounceTime(200), map((userExist: any) => {
 
         if (userExist.isExist === true) {
