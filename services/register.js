@@ -1,9 +1,10 @@
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 async function check(req, res, next) {
-    console.log(req.body.data);
+    console.log('register.check():'+JSON.stringify(req.body));
     try {
-        const query = req.body;
-        const data = req.collection.find({ query });
+        const data = req.users_col.find( req.body );
         const result = await data.toArray();
         if (result.length > 0) {
             res.status(200).json({ isExist: true });
@@ -12,22 +13,21 @@ async function check(req, res, next) {
         }
 
     } catch (e) {
-        console.log(e);
+        console.log('register.check().exception:'+e);
     }
 }
 
 async function insertUser(req, res, next) {
-    const username = req.body.username;
-    const email = req.body.email;
-    const password = await bcrypt.hash(req.body.password, 10);
-    const user = { username, password, email };
-    req.collection.insertOne(user, (err, rslt) => {
+    console.log('register.insertUser():'+JSON.stringify(req.body));
+    req.body.password = await bcrypt.hash(req.body.password, 10);
+    req.body.role = 'user';//default user
+    req.users_col.insertOne(req.body, (err, rslt) => {
         try {
             if (err) throw err;
-            res.status(200).json({ "msg": "element added..." });
+            res.status(200).json({ "status": 1 });
         } catch (e) {
             console.log('Error:\n' + e.errmsg);
-            res.status(200).json({ "msg": "data insertion failed" });
+            res.status(200).json({ "status": e.errmsg });
         }
     });
 }
