@@ -28,12 +28,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatIconModule } from '@angular/material/icon';
+
 import { MatSelectModule } from '@angular/material/select';
-import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
-import { PostListComponent } from './components/post/post-list/post-list.component';
 import { PostListItemComponent } from './components/post/post-list-item/post-list-item.component';
 import { PostCreateComponent } from './components/post/post-create/post-create.component';
+import { UserlistComponent } from './components/userlist/userlist.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
+import { PostListComponent } from './components/post/post-list/post-list.component';
+import { MatIconModule } from '@angular/material';
+import { TextareaAutosizeDirective } from './directives/textarea-autosize.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +55,10 @@ import { PostCreateComponent } from './components/post/post-create/post-create.c
     PostCommentComponent,
     PostDetailComponent,
     PostListItemComponent,
-    PostCreateComponent
+    PostCreateComponent,
+    TextareaAutosizeDirective,
+    UserlistComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +77,7 @@ import { PostCreateComponent } from './components/post/post-create/post-create.c
     MatExpansionModule,
     MatDialogModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
   ],
 
   entryComponents: [PostCommentComponent,PostCreateComponent],

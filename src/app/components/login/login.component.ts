@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SignupService } from '../../service/signup.service';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -33,7 +34,7 @@ export class LoginComponent implements OnDestroy {
   public loginForm: FormGroup;
   private subscription: Subscription;
 
-  constructor(private fb: FormBuilder, private chkSignup: SignupService) {
+  constructor(private fb: FormBuilder, private chkSignup: SignupService, private route: Router) {
     this.loginForm = fb.group({
       'username': ['', [Validators.required]],
       'password': ['', [Validators.required]]
@@ -45,6 +46,7 @@ export class LoginComponent implements OnDestroy {
     this.subscription = this.chkSignup.loginCheck(this.loginForm.value).subscribe((data: any) => {
       if (data.token) {
         localStorage.setItem('userToken', data.token);
+        this.route.navigate(['home']);
       } else {
         console.log('user not valid');
       }

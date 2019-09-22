@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 export class SignupService {
 
   constructor(public http: HttpClient) {
-    console.log('service constructor');
   }
 
   isExist(data: Object) {

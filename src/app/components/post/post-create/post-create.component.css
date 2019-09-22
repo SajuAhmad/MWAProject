@@ -1,9 +1,21 @@
-.example-container {
+.post-container {
   display: flex;
   flex-direction: column;
+  overflow: scroll;
+  max-height: 600px;
+  position: relative;
+
 }
 
 /* >* all It will target elements which are DIRECT children of a particular element. */
-.example-container>* {
+.post-container>* {
   width: 100%;
+}
+
+.post-buttons {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  height: 60px;
 }

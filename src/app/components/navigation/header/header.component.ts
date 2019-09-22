@@ -18,8 +18,8 @@ export class HeaderComponent implements OnInit {
 
   openPostDialog(): void {
     const dialogRef = this.dialog.open(PostCreateComponent, {
-      width: '500px',
-      height: '500px',
+      width: '800px',
+      height: 'auto',
       // data: { name: this.name, animal: this.animal }
     });
 
