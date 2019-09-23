@@ -34,6 +34,42 @@ async function getPost(req, res, next) {
     })
 }
 
+async function likePost(req, res, next) {
+    const data = req.body;
+    await req.posts_col.updateOne({
+        _id: ObjectId(data.id)
+    }, {
+        $push: {
+            likes: {
+                "username": data.username
+            }
+        }
+    })
+    res.json({
+        message: "success",
+        status: 200,
+    });
+}
+
+
+async function unlikePost(req, res, next) {
+    const data = req.body;
+    await req.posts_col.updateOne({
+        _id: ObjectId(data.id)
+    }, {
+        $pull: {
+            likes: {
+                "username": data.username
+            }
+        }
+    })
+    res.json({
+        message: "success",
+        status: 200,
+    });
+}
+
+
 async function getPostList(req, res, next) {
     console.log(req.body);
 
@@ -58,7 +94,7 @@ async function getPostList(req, res, next) {
 
 async function commendPost(req, res, next) {
 
-    await db.posts.updateOne({
+    await req.posts_col.updateOne({
         _id: ObjectId(req.body.id)
     }, {
         $push: {
@@ -77,27 +113,13 @@ async function commendPost(req, res, next) {
 
 }
 
-async function checkComment(req, res, next) {
-    console.log(req.body);
 
-    res.json({});
-    // req.posts_col.posts.aggregate([{
-    //     $match: {
-    //         _id: ObjectId('5d88f411cc12180ed44b2a0c'),
-    //         commends: {
-    //             $elemMatch: {
-    //                 username: 'max'
-    //             }
-    //         }
-    //     },
-
-    // }])
-}
 
 module.exports = {
     createPost,
     getPostList,
     getPost,
-    commendPost
+    commendPost,
+    likePost,
+    unlikePost
 }
-
