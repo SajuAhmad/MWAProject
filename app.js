@@ -20,7 +20,7 @@ app.set('strict routing', true);
 
 // ###############################
 const client = new MongoClient(privates.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
-const logPath = fs.createWriteStream(path.join(__dirname + 'access.log'), { flags: 'a' });
+const logPath = fs.createWriteStream(path.join(__dirname + '/access.log'), { flags: 'a' });
 let users_col = null;
 let posts_col = null;
 let cats_col = null;
