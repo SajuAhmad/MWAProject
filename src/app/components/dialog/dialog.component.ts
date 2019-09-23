@@ -6,7 +6,7 @@ import { AuthService } from '../../service/auth.service';
   template: `
     <h1 mat-dialog-title>Registration Successfully</h1>
     <mat-dialog-content>
-      Registered...}
+      Registered...:)
     </mat-dialog-content>
     <mat-dialog-actions>
       <!-- <button mat-button (click)="this.router.navigate(['home']);">Go Home</button>
