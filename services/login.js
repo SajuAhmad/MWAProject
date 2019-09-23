@@ -11,7 +11,7 @@ async function loginCheck(req, res, next) {
             const isCorrect = await bcrypt.compare(req.body.password, hash);
 
             if (isCorrect) {
-                const token = jwt.sign({ role: result[0].role }, 'very secret', { expiresIn: '2h' });
+                const token = jwt.sign({ username: result[0].username, role: result[0].role }, 'very secret', { expiresIn: '2h' });
                 console.log('loginCheck() : user logged in:' + result[0].username);
                 res.status(200).json({ token });
             } else {
