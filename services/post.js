@@ -51,6 +51,24 @@ async function likePost(req, res, next) {
     });
 }
 
+async function getCategoryList(req, res) {
+console.log(req.body.category)
+    const data = await req.posts_col.find({
+            category: req.body.category
+        })
+        .limit(10).toArray().then(data => {
+            // console.log(data)
+            return data;
+        }).catch(err => {
+            // console.log(err);
+            throw new Error(err);
+        });
+    res.json({
+        message: "success",
+        status: 200,
+        data: data
+    })
+}
 
 async function getCategories(req, res) {
     // console.debug('admin.getCategories():' + JSON.stringify(req.body))
@@ -153,5 +171,6 @@ module.exports = {
     commendPost,
     likePost,
     unlikePost,
-    getCategories
+    getCategories,
+    getCategoryList
 }
