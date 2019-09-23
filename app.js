@@ -21,8 +21,9 @@ app.set('strict routing', true);
 // ###############################
 const client = new MongoClient(privates.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const logPath = fs.createWriteStream(path.join(__dirname + 'access.log'), { flags: 'a' });
-let users_col=null;
-let posts_col=null;
+let users_col = null;
+let posts_col = null;
+let cats_col = null;
 
 function connectDB() {
     client.connect((err) => {
@@ -31,12 +32,13 @@ function connectDB() {
             db = client.db(privates.DATABASE_NAME);
             users_col = db.collection(privates.USERS_COLLECTION)
             posts_col = db.collection(privates.POSTS_COLLECTION)
-            console.log('Connected to database '+privates.DATABASE_NAME);
+            cats_col = db.collection(privates.CATS_COLLECTION)
+            console.log('Connected to database ' + privates.DATABASE_NAME);
         } catch (e) {
-            console.log('Connection Error:'+e);
+            console.log('Connection Error:' + e);
         }
     });
-} 
+}
 connectDB()//first connection
 
 // 3. Configurations
@@ -50,16 +52,13 @@ app.use(express.json());
 app.use((req, res, next) => {
     if (!client.isConnected()) {
         connectDB()
-    } 
+    }
     req.users_col = users_col;
     req.posts_col = posts_col;
     next();
 });
 // check token for every request
 app.use(async (req, res, next) => {
-    //console.log(req.url);
-    // const reqUrl = url.parse(req.url);
-    // console.log(reqUrl.pathname);
     if (req.url == '/api/login'
         || req.url == '/api/insert'
         || req.url == '/api/check') {
