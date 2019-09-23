@@ -381,3 +381,15 @@
 [0mGET /api/post [32m200 [0m419.707 ms - 26441[0m
 [0mPOST /api/post/getCategories [32m200 [0m48.445 ms - 61[0m
 [0mGET /api/post [36m304 [0m153.390 ms - -[0m
+[0mPOST /api/post/getCategories [0m- [0m- ms - -[0m
+[0mGET /api/post [0m- [0m- ms - -[0m
+[0mPOST /api/post/getCategories [32m200 [0m50.686 ms - 61[0m
+[0mGET /api/post [32m200 [0m385.889 ms - 26441[0m
+[0mGET /api/post/5d87ea27f61007d6887d9ed6 [32m200 [0m42.509 ms - 2812[0m
+[0mPOST /api/post/getCategories [32m200 [0m37.302 ms - 61[0m
+[0mGET /api/post [36m304 [0m100.941 ms - -[0m
+[0mGET /api/post/5d87eab2f61007d6887d9ed8 [32m200 [0m38.504 ms - 907[0m
+[0mPOST /api/post/getCategories [32m200 [0m39.388 ms - 61[0m
+[0mGET /api/post [36m304 [0m77.709 ms - -[0m
+[0mPOST /api/post/getCategories [32m200 [0m53.859 ms - 77[0m
+[0mGET /api/post [32m200 [0m112.548 ms - 26390[0m
