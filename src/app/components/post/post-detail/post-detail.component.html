@@ -28,8 +28,8 @@
     </mat-card-content>
     <mat-card-actions [ngStyle]="{'margin-left':'2%'}">
 
-      <button mat-button *ngIf="!liked" [ngClass]="{'button-liked':true}" (click)="like()">LIKE({{postItem.likes.length}})</button>
-      <button mat-button *ngIf="liked" [ngClass]="{'button-liked':false}" (click)="like()">LIKE({{postItem.likes.length}})</button>
+      <button mat-button *ngIf="liked" [ngClass]="{'button-liked':true}" (click)="like()">LIKE({{postItem.likes.length}})</button>
+      <button mat-button *ngIf="!liked" [ngClass]="{'button-liked':false}" (click)="like()">LIKE({{postItem.likes.length}})</button>
     
 
       <button mat-button (click)="openCommentDialog()" mat-flat-button color="accent">COMMENT</button>
