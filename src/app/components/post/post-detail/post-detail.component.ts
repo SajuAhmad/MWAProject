@@ -4,8 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { PostCommentComponent } from '../post-comment/post-comment.component';
 import { Subscription } from 'rxjs';
 import { PostService } from 'src/app/service/post.service';
-import { map, filter } from 'rxjs/operators';
-
+import { AuthService } from 'src/app/service/auth.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 export interface PostItem {
   desc: string,
@@ -23,17 +23,15 @@ export interface PostItem {
   styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent implements OnInit, OnDestroy {
-  postItem$;
-
-  // = {
-  //   desc: '',
-  //   img: '',
-  //   title: '',
-  //   _id: '',
-  //   like: 0,
-  //   unlike: 0,
-  //   commends: [Object]
-  // };
+  postItem: PostItem = {
+    desc: '',
+    img: '',
+    title: '',
+    _id: '',
+    like: 0,
+    unlike: 0,
+    commends: [Object]
+  };
   ngOnDestroy(): void {
     if (this.subscription !== undefined) {
       this.subscription.unsubscribe();
@@ -43,42 +41,56 @@ export class PostDetailComponent implements OnInit, OnDestroy {
   panelOpenState = true;
   isMore = false;
   moreButtonTitle = "MORE";
+  private id;
   private subscription: Subscription;
-  constructor(private route: ActivatedRoute, public dialog: MatDialog, public postService: PostService) {
+  constructor(private route: ActivatedRoute, private authService: AuthService, public dialog: MatDialog, public postService: PostService) {
 
   }
 
   ngOnInit() {
+    this.postService.emitterComment.subscribe(() => {
+      this.getDetail();
+    })
+    this.getDetail();
+  }
 
 
-    const id = this.route.params['_value']['id'];
-    if (id != "") {
-      this.postItem$ = this.postService.getSpecificPost(id).pipe(filter(res => {
+  getDetail() {
+    this.id = this.route.params['_value']['id'];
+    if (this.id != "") {
+      this.subscription = this.postService.getSpecificPost(this.id).subscribe(res => {
+        console.log(res);
         if (res['status'] == 200) {
-          return true;
+          this.postItem = res['data'];
         }
-        return false;
-      }),
-        map(res => res['data'])
-      );
+      });
+    }
+  }
+
+
+  openCommentDialog(): void {
+
+    // console.log()
+    if (this.authService.getUsername() !== "") {
+      const dialogRef = this.dialog.open(PostCommentComponent, {
+        width: '500px',
+        data: { id: this.id }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        // this.animal = result;
+      });
+    } else {
+      alert("Please Login In First");
     }
 
 
+
+
   }
 
 
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(PostCommentComponent, {
-      width: '250px',
-      // data: { name: this.name, animal: this.animal }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
-    });
-  }
 
   more() {
     if (this.moreButtonTitle === "MORE") {

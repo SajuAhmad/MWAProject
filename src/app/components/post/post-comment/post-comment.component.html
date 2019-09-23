@@ -1,1 +1,21 @@
-<p>post-comment works!</p>
+<form [formGroup]="myForm" class="post-commmend-container" (ngSubmit)="onComment()">
+  <label>Create a new commend</label>
+  <hr />
+
+
+  <mat-form-field>
+    <textarea [appTextareaAutosize]="height" matInput placeholder="Enter your desc" autocomplete="off"
+      formControlName="comment" required></textarea>
+
+    <mat-error *ngIf="myForm.get('comment').invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  
+
+
+  <button type="submit" mat-flat-button color="primary" [disabled]="!myForm.valid">POST</button>
+  <br />
+  <button (click)="cancel()" mat-flat-button color="accent">Cancel</button>
+
+
+</form>

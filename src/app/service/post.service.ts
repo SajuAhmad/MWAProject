@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 export class PostService {
 
   emitter = new EventEmitter();
+  emitterComment = new EventEmitter();
   constructor(public http: HttpClient) { }
 
   createPost(data: string) {
@@ -22,8 +23,16 @@ export class PostService {
     return this.http.get(url);
   }
 
-  finishRequest() {
+  commendPost(data: string) {
+    return this.http.post('http://localhost:1000/api/post/comment', data);
+  }
+
+  finishCreatePostRequest() {
     this.emitter.emit();
+  }
+
+  finishCreateCommendRequest() {
+    this.emitterComment.emit();
   }
 
 
