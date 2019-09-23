@@ -18,7 +18,7 @@ const MY_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'users', component: UserlistComponent, canActivate: [TokenGuard, AdminGuard] },
   { path: 'post', component: PostListComponent, canActivate: [TokenGuard, UserGuard] },
-  { path: 'post/:id', component: PostDetailComponent, canActivate: [TokenGuard, UserGuard] },
+  { path: 'home/:id', component: PostDetailComponent, canActivate: [TokenGuard, UserGuard] },
   { path: '**', redirectTo: 'home' }
 ];
 
