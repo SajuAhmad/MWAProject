@@ -35,6 +35,23 @@ async function addCategory(req, res) {
     });
 }
 
+async function deleteCategory(req, res) {
+    console.debug('admin.deleteCategory():' + JSON.stringify(req.body))
+
+    const result = await req.cats_col.deleteOne(req.body,
+        (err, rslt) => {
+        try {
+            if (err) throw err;
+            res.status(200).json({ "status": 1 });
+        } catch (e) {
+            console.log('Error:\n' + e.errmsg);
+            res.status(200).json({ "status": e.errmsg });
+        }
+    });
+}
+
+
+
 async function updateUser(req, res) {
     console.debug('admin.updateUser():' + JSON.stringify(req.body))
     const result = await req.users_col.updateOne({ username: req.body.username },
@@ -52,4 +69,4 @@ async function updateUser(req, res) {
 }
 
 
-module.exports = { getUserList, getCategories, addCategory, updateUser }
+module.exports = { getUserList, getCategories, addCategory, deleteCategory, updateUser }
