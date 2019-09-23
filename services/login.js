@@ -2,10 +2,12 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 async function loginCheck(req, res, next) {
-    //console.log(req.body.password);
+  
+    console.log(req.body);
     try {
         const data = req.users_col.find({ username: req.body.username });
         const result = await data.toArray();
+        console.log(result);
         if (result.length === 1 && result[0].active===true) {
             const hash = result[0].password;
             const isCorrect = await bcrypt.compare(req.body.password, hash);
