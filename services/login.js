@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 async function loginCheck(req, res, next) {
-    console.log(req.body.password);
+    //console.log(req.body.password);
     try {
         const data = req.users_col.find({ username: req.body.username });
         const result = await data.toArray();
