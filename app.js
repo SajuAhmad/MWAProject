@@ -23,6 +23,7 @@ const client = new MongoClient(privates.DATABASE_URL, { useNewUrlParser: true, u
 const logPath = fs.createWriteStream(path.join(__dirname + 'access.log'), { flags: 'a' });
 let users_col = null;
 let posts_col = null;
+let cats_col = null;
 
 function connectDB() {
     client.connect((err) => {
@@ -31,6 +32,7 @@ function connectDB() {
             db = client.db(privates.DATABASE_NAME);
             users_col = db.collection(privates.USERS_COLLECTION)
             posts_col = db.collection(privates.POSTS_COLLECTION)
+            cats_col = db.collection(privates.CATS_COLLECTION)
             console.log('Connected to database ' + privates.DATABASE_NAME);
         } catch (e) {
             console.log('Connection Error:' + e);
