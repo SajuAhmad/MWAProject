@@ -13,6 +13,7 @@ route.get('/users', admin.getUserList);
 route.post('/users', admin.updateUser);
 route.post('/categories/get', admin.getCategories);
 route.post('/categories/post', admin.addCategory);
+route.post('/categories/delete', admin.deleteCategory);
 
 
 route.post('/post/create', post.createPost);
