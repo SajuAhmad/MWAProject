@@ -41,6 +41,9 @@ export class PostService {
     
     return this.http.post('http://localhost:1000/api/post/getCategories', {});
   }
+  getCategoryList(data: any) {
+    return this.http.post('http://localhost:1000/api/post/categoryList', data);
+  }
 
   finishCreatePostRequest() {
     this.emitter.emit();

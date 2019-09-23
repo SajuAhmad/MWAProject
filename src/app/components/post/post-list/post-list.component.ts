@@ -34,6 +34,10 @@ export class PostListComponent implements OnInit, OnDestroy {
     })
   }
 
+  getTop() {
+    this.getPostList();
+  }
+
   ngOnInit() {
     this.getPostList();
 
@@ -43,8 +47,11 @@ export class PostListComponent implements OnInit, OnDestroy {
 
   }
 
-  getPostList() {
-    this.posts$ = this.postService.getTopTenPostList().pipe(filter(res => {
+  valueChange(o) {
+    console.log(o);
+
+    this.posts$ = this.postService.getCategoryList({ category: o }).pipe(filter(res => {
+
       if (res['status'] == 200) {
         return true;
       }
@@ -52,5 +59,17 @@ export class PostListComponent implements OnInit, OnDestroy {
     }),
       map(res => res['data'])
     );
-  }
+  
+}
+
+getPostList() {
+  this.posts$ = this.postService.getTopTenPostList().pipe(filter(res => {
+    if (res['status'] == 200) {
+      return true;
+    }
+    return false;
+  }),
+    map(res => res['data'])
+  );
+}
 }
