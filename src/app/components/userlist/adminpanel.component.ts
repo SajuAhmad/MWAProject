@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { SignupService } from 'src/app/service/signup.service';
 import { Subscription, Observable } from 'rxjs';
 import { FormGroup, FormBuilder, Validators, FormControl, ValidationErrors } from '@angular/forms';
 import { debounceTime, map } from 'rxjs/operators';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-adminpanel',
@@ -16,7 +17,6 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
   users: any;
   categories: any;
   myForm: FormGroup;
-
 
   constructor(private service: SignupService, private formBuilder: FormBuilder) {
     this.getUserList()
