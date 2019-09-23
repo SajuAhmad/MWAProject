@@ -26,6 +26,15 @@ export class AuthService {
   //   return localStorage.getItem('username');
   // }
 
+  getUsername() {
+    if (this.getToken()) {
+      const decoded = this.helper.decodeToken(this.getToken());
+      return decoded.username;
+    } else {
+      return 'visitor';
+    }
+  }
+
   getRole() {
     if (this.getToken()) {
       const decoded = this.helper.decodeToken(this.getToken());

@@ -38,6 +38,8 @@ import { PostCommentComponent } from './components/post/post-comment/post-commen
 import { PostListComponent } from './components/post/post-list/post-list.component';
 import { DialogComponent } from './components/dialog.component';
 import { TextareaAutosizeDirective } from './directives/textarea-autosize.directive';
+import { UserGuard } from './guards/user.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,6 @@ import { TextareaAutosizeDirective } from './directives/textarea-autosize.direct
     SidenavListComponent,
     PostCommentComponent,
     PostDetailComponent,
-    PostListItemComponent,
     UserlistComponent,
     LogoutComponent,
     DialogComponent,
@@ -92,7 +93,9 @@ import { TextareaAutosizeDirective } from './directives/textarea-autosize.direct
       useClass: TokenInterceptor,
       multi: true
     },
-    TokenGuard
+    TokenGuard,
+    UserGuard,
+    AdminGuard
   ],
   bootstrap: [AppComponent]
 })
