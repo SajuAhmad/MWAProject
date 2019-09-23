@@ -2,3 +2,4 @@ node_modules
 privates.js
 mwa-server.code-workspace
 .vscode/launch.json
+access.log
