@@ -1,25 +1,17 @@
 <div [ngStyle]="{'position':'relative'}" [ngClass]="{'item':true}">
   <div [ngStyle]="{'position':'relative'}" [ngClass]="{'left-part':true}">
     <div>
-      <a routerLink="/post/detail" [ngClass]="{'title':true}"> The Making of the Best-Ever Episode of ‘Friends’</a>
+      <a [routerLink]="[item._id]" [ngClass]="{'title':true}"> {{item.title}}</a>
     </div>
     <div>
       <p [ngClass]="{'desc':true}">
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
+            {{item.desc}}
       </p>
     </div>
 
   </div>
   <div [ngStyle]="{'position':'relative'}" [ngClass]="{'right-part':true}">
-       <img   src="https://miro.medium.com/max/6000/1*oqYSCoPiSrVjaKnxdWR5Jw.jpeg"
-         alt="Photo of a Shiba Inu">
+       <img  [src]="item.img" 
+         [alt]="item.title">
   </div>
 </div>

@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import {
   FormControl, Validators, FormGroup,
   FormBuilder,
   FormArray
 } from '@angular/forms';
 import { PostService } from 'src/app/service/post.service';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-post-create',
@@ -21,8 +24,8 @@ export class PostCreateComponent implements OnInit {
   // img = new FormControl('', [Validators.nullValidator]);
   // desc = new FormControl('', [Validators.required]);
   height = '80px';
-  constructor(private formBuilder: FormBuilder, public dialogRef: MatDialogRef<PostCreateComponent>,
-    public postService: PostService
+  constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<PostCreateComponent>,
+    public postService: PostService, private route: ActivatedRoute
   ) {
 
     this.myForm = formBuilder.group({
@@ -41,8 +44,25 @@ export class PostCreateComponent implements OnInit {
 
   onPost() {
 
-    this.subscription = this.postService.createPost(this.myForm.value).subscribe(data => {
-      console.log(data);
+    const obj = {
+      ...this.myForm.value,
+      username: this.authService.getUsername(),
+      'like': 0, 'unlike': 0, commends: []
+    };
+
+    this.subscription = this.postService.createPost(obj).subscribe(data => {
+
+      if (data['status'] == 200) {
+        this.dialogRef.close();
+        if (window.location.href == "http://localhost:4200/post") {
+          window.location.reload();
+        } else {
+          this.router.navigate(['post']);
+        }
+        console.log(window.location.href);
+
+
+      }
     })
 
   }

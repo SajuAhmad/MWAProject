@@ -5,7 +5,7 @@
 
       <mat-card-title>
         <h1>
-          The Making of the Best-Ever Episode of ‘Friends’
+          {{postItem.title}}
         </h1>
 
       </mat-card-title>
@@ -16,25 +16,15 @@
       <mat-card-title>Shiba Inu</mat-card-title>
       <mat-card-subtitle>Dog Breed</mat-card-subtitle>
     </mat-card-header>
-    <img [ngStyle]="{'width':'95%','margin-left':'2%'}" mat-card-image
-      src="https://miro.medium.com/max/6000/1*oqYSCoPiSrVjaKnxdWR5Jw.jpeg" alt="Photo of a Shiba Inu">
+    <img [ngStyle]="{'width':'95%','margin-left':'2%'}" mat-card-image [src]="postItem.img" alt="Photo of a Shiba Inu">
     <mat-card-content>
       <div [ngStyle]="{'margin-left':'2%','margin-right':'2%'}"
-         [ngClass]="{'post-descrition':true,'post-descrition-less':!isMore,'post-descrition-more':isMore}">
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
+        [ngClass]="{'post-descrition':true,'post-descrition-less':!isMore,'post-descrition-more':isMore}">
+        {{postItem.desc}}
       </div>
       <br />
-      <button
-      [ngStyle]="{'margin-left':'2%'}"
-      mat-raised-button color="primary" (click)="more()">{{moreButtonTitle}}</button>
+      <button [ngStyle]="{'margin-left':'2%'}" mat-raised-button color="primary"
+        (click)="more()">{{moreButtonTitle}}</button>
     </mat-card-content>
     <mat-card-actions [ngStyle]="{'margin-left':'2%'}">
 
