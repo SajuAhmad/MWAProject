@@ -1,4 +1,4 @@
- var ObjectId = require('mongodb').ObjectId;
+var ObjectId = require('mongodb').ObjectId;
 async function createPost(req, res, next) {
 
     await req.posts_col.insertOne(req.body).then(data => {
@@ -35,18 +35,18 @@ async function getPost(req, res, next) {
 }
 
 async function getPostList(req, res, next) {
-    console.log(req.body);
+    // console.log(req.body);
 
     const datas = await req.posts_col.find({}).sort({
         'like': -1
-    }).limit(10).toArray().then(data => {
+    }).limit(50).toArray().then(data => {
         // console.log(data)
         return data;
     }).catch(err => {
         // console.log(err);
         throw new Error(err);
     })
-    console.log(datas);
+    // console.log(datas);
     res.json({
         message: "success",
         status: 200,
@@ -55,8 +55,8 @@ async function getPostList(req, res, next) {
 }
 
 
-async function getCategories(req,res) {
-    console.debug('post.getCategories():'+JSON.stringify(req.body))
+async function getCategories(req, res) {
+    console.debug('post.getCategories():' + JSON.stringify(req.body))
     try {
         const result = await req.users_col.find({}).toArray();
         res.status(200).json(result);

@@ -15,6 +15,6 @@ route.post('/post', post.createPost);
 route.get('/post', post.getPostList);
 route.get('/post/:id', post.getPost);
 
-route.get('/protected', admin.getUserList);
+route.get('/users', admin.getUserList);
 
 module.exports = route;

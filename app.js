@@ -59,17 +59,17 @@ app.use((req, res, next) => {
 });
 // check token for every request
 app.use(async (req, res, next) => {
-    if (req.url == '/api/login'
-        || req.url == '/api/insert'
-        || req.url == '/api/check') {
-        return next();
-    } else {
+    console.log(req.url);
+    if (req.url == '/api/users') {
         if (req.headers.authorization && jwt.verify(req.headers.authorization, 'very secret')) {
             next();
-        }
-        else
+        } else {
             res.status(404).json({ msg: 'you are not authorized' });
+        }
+    } else {
+        next();
     }
+
 });
 
 // 5. Routers
