@@ -6,7 +6,7 @@ import { map, debounceTime } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { MatDialogRef, MatDialog } from '@angular/material';
-import { DialogComponent } from '../dialog.component';
+import { DialogComponent } from '../dialog/dialog.component';
 
 //import { AlertService, UserService, AuthenticationService } from '@/_services';
 
@@ -75,7 +75,7 @@ export class SignupComponent implements OnInit {
         //this.alertService.success('Registration successful', true);
         this.openDialog()
         setTimeout(() => {
-          this.router.navigate(['home']);
+          this.router.navigate(['login']);
           this.dialogRef.close();
         }, 2500);
         //new DialogComponent(this.router,this.authService, this)

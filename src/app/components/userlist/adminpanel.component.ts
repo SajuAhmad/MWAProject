@@ -1,6 +1,8 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, HostBinding } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SignupService } from 'src/app/service/signup.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { FormGroup, FormBuilder, Validators, FormControl, ValidationErrors } from '@angular/forms';
+import { debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-adminpanel',
@@ -9,17 +11,23 @@ import { Subscription } from 'rxjs';
   providers: [SignupService]
 })
 
-export class AdminPanelComponent implements OnInit ,OnDestroy{
+export class AdminPanelComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   users: any;
   categories: any;
+  myForm: FormGroup;
 
-  constructor(private service: SignupService) {
+
+  constructor(private service: SignupService, private formBuilder: FormBuilder) {
     this.getUserList()
     this.getCategories()
+
+    this.myForm = formBuilder.group({
+      name: ['', Validators.required, this.asyncCategoryValidator.bind(this)],
+    });
   }
 
-  getUserList(): void{
+  getUserList(): void {
     console.log('UserlistComponent.constructor()')
     this.subscription = this.service.getUserList().subscribe((data: any) => {
       this.users = data;
@@ -27,8 +35,8 @@ export class AdminPanelComponent implements OnInit ,OnDestroy{
     });
   }
 
-  getCategories(): void{
-    this.subscription = this.service.getCategories().subscribe((data: any) => {
+  getCategories(): void {
+    this.subscription = this.service.getCategories({}).subscribe((data: any) => {
       this.categories = data;
       //console.log('UserlistComponent.categories'+this.categories)
     });
@@ -37,7 +45,7 @@ export class AdminPanelComponent implements OnInit ,OnDestroy{
 
 
   ngOnInit(): void {
-    
+
   }
 
   ngOnDestroy() {
@@ -47,7 +55,7 @@ export class AdminPanelComponent implements OnInit ,OnDestroy{
     }
   }
 
-  onRoleChange(user): void{
+  onRoleChange(user): void {
     console.log('AdminPanelComponent.onRoleChange()')
     user.role = (user.role === 'admin') ? 'user' : 'admin';
     this.subscription = this.service.updateUser(user).subscribe((data: any) => {
@@ -57,7 +65,7 @@ export class AdminPanelComponent implements OnInit ,OnDestroy{
     });
   }
 
-  onStatusChange(user): void{
+  onStatusChange(user): void {
     console.log('AdminPanelComponent.onStatusChange()')
     user.active = !user.active;
     this.subscription = this.service.updateUser(user).subscribe((data: any) => {
@@ -67,13 +75,32 @@ export class AdminPanelComponent implements OnInit ,OnDestroy{
     });
   }
 
-  addCategory(name): void{
-    console.log('AdminPanelComponent.addCategory():'+name)
-    this.subscription = this.service.addCategory('name').subscribe((data: any) => {
+  addCategory(): void {
+    console.log('AdminPanelComponent.addCategory():' + this.myForm.value)
+    this.subscription = this.service.addCategory(this.myForm.value).subscribe((data: any) => {
       //this.categories = data;
       this.getCategories()
+      this.myForm.reset()
       //console.log('UserlistComponent.categories'+this.categories)
     });
+  }
+  // convenience getter for easy access to form fields
+  get f() { return this.myForm.controls; }
+
+  asyncCategoryValidator(control: FormControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
+    //console.log('SignupComponent.asyncCategoryValidator():'+control.value)
+    
+    return this.service.getCategories({ name: control.value })
+      .pipe(debounceTime(500), map((category: any) => {
+        if (category.length > 0) {
+          //console.log('catExists.isExist === true')
+          return {
+            isExist: true
+          };
+        }
+        //console.log('catExists.isExist === false')
+        return null;
+      }));
   }
 
 }

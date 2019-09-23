@@ -32,14 +32,14 @@ export class SignupService {
     return this.http.post('http://localhost:1000/api/users', data);
   }
 
-  getCategories() {
+  getCategories(data: object) {
     console.debug('SignupService.getCategories()');
-    return this.http.get('http://localhost:1000/api/categories');
+    return this.http.post('http://localhost:1000/api/categories/get', data);
   }
 
-  addCategory(data: string) {
+  addCategory(data: object) {
     console.debug('SignupService.addCategory():' + data);
-    return this.http.post('http://localhost:1000/api/categories', { name: data });
+    return this.http.post('http://localhost:1000/api/categories/post', data);
   }
 
 

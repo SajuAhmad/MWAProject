@@ -1,4 +1,4 @@
-<form [formGroup]="myForm" class="post-commmend-container" (ngSubmit)="onComment()">
+<form [formGroup]="myForm" class="post-commmend-container" >
   <label>Create a new commend</label>
   <hr />
 
@@ -13,7 +13,7 @@
   
 
 
-  <button type="submit" mat-flat-button color="primary" [disabled]="!myForm.valid">POST</button>
+  <button (click)="onComment()" mat-flat-button color="primary" [disabled]="!myForm.valid">POST</button>
   <br />
   <button (click)="cancel()" mat-flat-button color="accent">Cancel</button>
 

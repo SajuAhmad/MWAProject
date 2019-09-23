@@ -28,17 +28,19 @@
     </mat-card-content>
     <mat-card-actions [ngStyle]="{'margin-left':'2%'}">
 
-      <button mat-button>LIKE</button>
-      <button mat-button>UNLIKE</button>
-      <button mat-button (click)="openCommentDialog()">COMMENT</button>
+      <button mat-button *ngIf="liked" [ngClass]="{'button-liked':true}" (click)="like()">LIKE({{postItem.likes.length}})</button>
+      <button mat-button *ngIf="!liked" [ngClass]="{'button-liked':false}" (click)="like()">LIKE({{postItem.likes.length}})</button>
+    
+
+      <button mat-button (click)="openCommentDialog()" mat-flat-button color="accent">COMMENT</button>
     </mat-card-actions>
 
     <mat-accordion [ngStyle]="{'position':'relative','margin-left':'2%','margin-right':'2%'}">
 
-      <mat-expansion-panel [ngStyle]='{"position":"relative"}' (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false">
+      <mat-expansion-panel [ngStyle]='{"position":"relative"}' [expanded]="panelOpenState === true"
+        (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
-          <mat-panel-title>
+          <mat-panel-title >
             COMMENDS
           </mat-panel-title>
           <mat-panel-description>
@@ -48,19 +50,25 @@
 
         <mat-list>
           <div *ngFor="let commend of postItem.commends; let num = index">
-            <mat-list-item [ngStyle]="{'height':'auto','width':'80%', 'overflow': 'hidden'}">
-              <div>
-                <h3> {{commend.username}}:</h3>
-                {{ commend.desc}}
-                sdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsds
-                sdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsds
-                sdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsds
-              </div>
+            <!-- <mat-list-item [ngStyle]="{'height':'auto','width':'80%', 'overflow': 'hidden'}"> -->
+
+            <mat-card class="example-card">
+              <!-- <mat-card-title> -->
+              <!-- </mat-card-title> -->
+              <h4> {{commend.username}}:</h4>
+              <mat-card-content>
+                <p>
+                  {{ commend.desc}}
+                </p>
+              </mat-card-content>
+              <mat-divider></mat-divider>
+            </mat-card>
 
 
 
-            </mat-list-item>
-            <mat-divider></mat-divider>
+
+            <!-- </mat-list-item> -->
+
           </div>
 
 

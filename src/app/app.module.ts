@@ -37,7 +37,7 @@ import { AdminPanelComponent } from './components/userlist/adminpanel.component'
 import { LogoutComponent } from './components/logout/logout.component';
 import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
 import { PostListComponent } from './components/post/post-list/post-list.component';
-import { DialogComponent } from './components/dialog.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 import { TextareaAutosizeDirective } from './directives/textarea-autosize.directive';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
