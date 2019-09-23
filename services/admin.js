@@ -12,7 +12,7 @@ async function getUserList(req, res, next) {
 async function getCategories(req, res) {
     console.debug('admin.getCategories():' + JSON.stringify(req.body))
     try {
-        const result = await req.cats_col.find({}).toArray();
+        const result = await req.cats_col.find({},{projection: {_id:0}}).toArray();
         res.status(200).json(result);
     } catch (e) {
         console.log(e);
