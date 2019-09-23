@@ -1,0 +1,21 @@
+.post-commmend-container {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  max-height: 600px;
+  position: relative;
+
+}
+
+/* >* all It will target elements which are DIRECT children of a particular element. */
+.post-commmend-container>* {
+  width: 100%;
+}
+
+.post-commmend-buttons {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  height: 60px;
+}

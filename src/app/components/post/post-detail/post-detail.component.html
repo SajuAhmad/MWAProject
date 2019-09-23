@@ -30,7 +30,7 @@
 
       <button mat-button>LIKE</button>
       <button mat-button>UNLIKE</button>
-      <button mat-button (click)="openDialog()">COMMENT</button>
+      <button mat-button (click)="openCommentDialog()">COMMENT</button>
     </mat-card-actions>
 
     <mat-accordion [ngStyle]="{'position':'relative','margin-left':'2%','margin-right':'2%'}">
@@ -47,17 +47,23 @@
         </mat-expansion-panel-header>
 
         <mat-list>
-          <mat-list-item>Item 1</mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>Item 2</mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>Item 3</mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>Item 3</mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>Item 3</mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>Item 3</mat-list-item>
+          <div *ngFor="let commend of postItem.commends; let num = index">
+            <mat-list-item [ngStyle]="{'height':'auto','width':'80%', 'overflow': 'hidden'}">
+              <div>
+                <h3> {{commend.username}}:</h3>
+                {{ commend.desc}}
+                sdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsds
+                sdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsds
+                sdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsdssdsds
+              </div>
+
+
+
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </div>
+
+
         </mat-list>
       </mat-expansion-panel>
     </mat-accordion>

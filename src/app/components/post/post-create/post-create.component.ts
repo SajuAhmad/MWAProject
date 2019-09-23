@@ -24,8 +24,11 @@ export class PostCreateComponent implements OnInit {
   // img = new FormControl('', [Validators.nullValidator]);
   // desc = new FormControl('', [Validators.required]);
   height = '80px';
-  constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<PostCreateComponent>,
-    public postService: PostService, private route: ActivatedRoute
+  constructor(private router: Router, private authService: AuthService,
+    private formBuilder: FormBuilder,
+    private dialogRef: MatDialogRef<PostCreateComponent>,
+    private postService: PostService,
+    private route: ActivatedRoute
   ) {
 
     this.myForm = formBuilder.group({
@@ -42,7 +45,7 @@ export class PostCreateComponent implements OnInit {
   ngOnInit() {
   }
 
-  onPost() {
+  onPost(): void {
 
     const obj = {
       ...this.myForm.value,
@@ -54,14 +57,10 @@ export class PostCreateComponent implements OnInit {
 
       if (data['status'] == 200) {
         this.dialogRef.close();
-        if (window.location.href == "http://localhost:4200/post") {
-          window.location.reload();
-        } else {
-          this.router.navigate(['post']);
-        }
+        this.postService.finishCreatePostRequest();
+        this.router.navigate(['home']);
+ 
         console.log(window.location.href);
-
-
       }
     })
 

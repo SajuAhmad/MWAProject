@@ -24,12 +24,24 @@ export class SignupService {
 
   getUserList() {
     console.debug('SignupService.getUserList()');
-    return this.http.get('http://localhost:1000/api/protected');
+    return this.http.get('http://localhost:1000/api/users');
+  }
+
+  updateUser(data: object){
+    console.debug('SignupService.getUserList()');
+    return this.http.post('http://localhost:1000/api/users', data);
   }
 
   getCategories() {
-    console.debug('SignupService.getUserList()');
+    console.debug('SignupService.getCategories()');
     return this.http.get('http://localhost:1000/api/categories');
   }
+
+  addCategory(data: string) {
+    console.debug('SignupService.addCategory():'+data);
+    return this.http.post('http://localhost:1000/api/categories', {name: data});
+  }
+
+  
   
 }
