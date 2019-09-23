@@ -37,6 +37,11 @@ export class PostService {
     return this.http.post('http://localhost:1000/api/post/unlike', data);
   }
 
+  getCategory() {
+    
+    return this.http.post('http://localhost:1000/api/post/getCategories', {});
+  }
+
   finishCreatePostRequest() {
     this.emitter.emit();
   }

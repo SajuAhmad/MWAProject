@@ -42,6 +42,9 @@ export class SignupService {
     return this.http.post('http://localhost:1000/api/categories/post', data);
   }
 
-
+  deleteCategory(data: object) {
+    console.debug('SignupService.deleteCategory():' + data);
+    return this.http.post('http://localhost:1000/api/categories/delete', data);
+  }
 
 }

@@ -3,6 +3,11 @@ import { PostListItemComponent } from '../post-list-item/post-list-item.componen
 import { PostService } from 'src/app/service/post.service';
 import { Subscription, Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
+import { SignupService } from 'src/app/service/signup.service';
+export interface Food {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
@@ -14,12 +19,19 @@ export class PostListComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
     }
   }
-
+  categories;
 
   private subscription: Subscription;
   posts$;
-  constructor(private postService: PostService, ) {
+  constructor(private postService: PostService, private signupService: SignupService, ) {
+    this.postService.getCategory(
+    ).subscribe(res => {
+      console.log(res);
+      if (res['status'] == 200) {
+        this.categories = res["data"];
+      }
 
+    })
   }
 
   ngOnInit() {

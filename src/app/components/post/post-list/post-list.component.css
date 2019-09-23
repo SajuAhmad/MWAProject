@@ -2,6 +2,9 @@
   background: #FFFFFF;
   width: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
  
 }
 
@@ -11,4 +14,20 @@
   margin-left: 10%;
   position: relative;
   min-width: 400px;
+}
+
+.category{
+  text-align: right;
+ 
+  width:50%;
+  margin-right: 10%;
+  display: inline-block;
+}
+
+.top {
+  text-align: left;
+  width:30%;
+  margin-left: 10%;
+  
+  display: inline-block;
 }

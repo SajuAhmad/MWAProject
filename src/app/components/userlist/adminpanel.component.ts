@@ -23,7 +23,7 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
     this.getCategories()
 
     this.myForm = formBuilder.group({
-      name: ['', Validators.required, this.asyncCategoryValidator.bind(this)],
+      name: ['', Validators.required, this.asyncCategoryValidator.bind(this), Validators.minLength(3)],
     });
   }
 
@@ -75,9 +75,19 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
     });
   }
 
-  addCategory(): void {
-    console.log('AdminPanelComponent.addCategory():' + this.myForm.value)
+  addCategory(data): void {
+    console.log('AdminPanelComponent.addCategory():' + JSON.stringify(this.myForm.value))
     this.subscription = this.service.addCategory(this.myForm.value).subscribe((data: any) => {
+      //this.categories = data;
+      this.getCategories()
+      this.myForm.reset()
+      //console.log('UserlistComponent.categories'+this.categories)
+    });
+  }
+
+  deleteCategory(data): void {
+    console.log('AdminPanelComponent.deleteCategory():' + JSON.stringify(this.myForm.value))
+    this.subscription = this.service.deleteCategory(this.myForm.value).subscribe((data: any) => {
       //this.categories = data;
       this.getCategories()
       this.myForm.reset()
@@ -89,7 +99,7 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
 
   asyncCategoryValidator(control: FormControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
     //console.log('SignupComponent.asyncCategoryValidator():'+control.value)
-    
+
     return this.service.getCategories({ name: control.value })
       .pipe(debounceTime(500), map((category: any) => {
         if (category.length > 0) {
