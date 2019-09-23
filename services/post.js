@@ -98,7 +98,6 @@ module.exports = {
     createPost,
     getPostList,
     getPost,
-    commendPost,
-    getCategories
+    commendPost
 }
 
