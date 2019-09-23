@@ -17,10 +17,11 @@
       <td>{{row.firstname}}</td>
       <td>{{row.lastname}}</td>
       <td>
-        <mat-slide-toggle (change)="onRoleChange(row)" [checked]="row.role === 'admin'"></mat-slide-toggle>
+        <mat-slide-toggle color="warn" (change)="onRoleChange(row)" [checked]="row.role === 'admin'">
+        </mat-slide-toggle>
       </td>
       <td>
-        <mat-slide-toggle (change)="onStatusChange(row)" [checked]="row.active"></mat-slide-toggle>
+        <mat-slide-toggle color="primary" (change)="onStatusChange(row)" [checked]="row.active"></mat-slide-toggle>
       </td>
     </tr>
   </tbody>
