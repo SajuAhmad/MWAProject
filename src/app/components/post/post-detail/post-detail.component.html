@@ -10,21 +10,21 @@
       </mat-card-title>
 
     </mat-card-header>
-   
- <mat-card-header>
 
-   <mat-card-title>
-     <h5>
-       Author : {{postItem.username}}
-     </h5>
-   </mat-card-title>
+    <mat-card-header>
 
- </mat-card-header>
+      <mat-card-title>
+        <h5>
+          Author : {{postItem.username}}
+        </h5>
+      </mat-card-title>
+      <mat-card-subtitle>category: {{postItem.category}}</mat-card-subtitle>
+    </mat-card-header>
 
-    
-     
-      
- 
+
+
+
+
     <img [ngStyle]="{'width':'95%','margin-left':'2%'}" mat-card-image [src]="postItem.img" alt="Photo of a Shiba Inu">
     <mat-card-content>
       <div [ngStyle]="{'margin-left':'2%','margin-right':'2%'}"
@@ -39,7 +39,7 @@
 
       <button mat-button *ngIf="liked" [ngClass]="{'button-liked':true}" (click)="like()">LIKE({{count}})</button>
       <button mat-button *ngIf="!liked" [ngClass]="{'button-liked':false}" (click)="like()">LIKE({{count}})</button>
-    
+
 
       <button mat-button (click)="openCommentDialog()" mat-flat-button color="accent">COMMENT</button>
     </mat-card-actions>
@@ -49,7 +49,7 @@
       <mat-expansion-panel [ngStyle]='{"position":"relative"}' [expanded]="panelOpenState === true"
         (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
-          <mat-panel-title >
+          <mat-panel-title>
             COMMENDS
           </mat-panel-title>
           <mat-panel-description>

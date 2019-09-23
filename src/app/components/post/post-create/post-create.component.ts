@@ -10,6 +10,9 @@ import {
 } from '@angular/forms';
 import { PostService } from 'src/app/service/post.service';
 import { AuthService } from 'src/app/service/auth.service';
+import { SignupService } from 'src/app/service/signup.service';
+
+
 
 @Component({
   selector: 'app-post-create',
@@ -24,11 +27,14 @@ export class PostCreateComponent implements OnInit {
   // img = new FormControl('', [Validators.nullValidator]);
   // desc = new FormControl('', [Validators.required]);
   height = '80px';
+
+  categories;
   constructor(private router: Router, private authService: AuthService,
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<PostCreateComponent>,
     private postService: PostService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private signupService: SignupService,
   ) {
 
     this.myForm = formBuilder.group({
@@ -43,6 +49,12 @@ export class PostCreateComponent implements OnInit {
 
 
   ngOnInit() {
+    this.signupService.getCategories(
+      {}
+    ).subscribe(res => {
+      console.log(res);
+      this.categories = res;
+    })
   }
 
   onPost(): void {
@@ -59,7 +71,7 @@ export class PostCreateComponent implements OnInit {
         this.dialogRef.close();
         this.postService.finishCreatePostRequest();
         this.router.navigate(['home']);
- 
+
         console.log(window.location.href);
       }
     })
