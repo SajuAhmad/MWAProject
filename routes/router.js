@@ -8,13 +8,18 @@ const post = require('../services/post');
 route.post('/check', register.check);
 route.post('/insert', register.insertUser);
 route.post('/login', login.loginCheck);
-route.post('/categories', post.getCategories);
-route.post('/post/create', post.createPost);
 
+route.get('/users', admin.getUserList);
+route.post('/users', admin.updateUser);
+route.get('/categories', admin.getCategories);
+route.post('/categories', admin.addCategory);
+
+
+route.post('/post/create', post.createPost);
 route.post('/post', post.createPost);
 route.get('/post', post.getPostList);
 route.get('/post/:id', post.getPost);
 
-route.get('/protected', admin.getUserList);
+
 
 module.exports = route;

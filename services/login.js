@@ -6,7 +6,7 @@ async function loginCheck(req, res, next) {
     try {
         const data = req.users_col.find({ username: req.body.username });
         const result = await data.toArray();
-        if (result.length === 1) {
+        if (result.length === 1 && result[0].active===true) {
             const hash = result[0].password;
             const isCorrect = await bcrypt.compare(req.body.password, hash);
 

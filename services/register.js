@@ -21,6 +21,7 @@ async function insertUser(req, res, next) {
     console.log('register.insertUser():'+JSON.stringify(req.body));
     req.body.password = await bcrypt.hash(req.body.password, 10);
     req.body.role = 'user';//default user
+    req.body.active = true;//default user
     req.users_col.insertOne(req.body, (err, rslt) => {
         try {
             if (err) throw err;

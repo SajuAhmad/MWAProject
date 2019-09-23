@@ -55,6 +55,7 @@ app.use((req, res, next) => {
     } 
     req.users_col = users_col;
     req.posts_col = posts_col;
+    req.cats_col = cats_col;
     next();
 });
 // check token for every request

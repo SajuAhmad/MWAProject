@@ -1,3 +1,4 @@
 node_modules
 privates.js
-mwa-server.code-workspacemwa-server.code-workspace
+mwa-server.code-workspace
+.vscode/launch.json
