@@ -11,8 +11,8 @@ route.post('/login', login.loginCheck);
 
 route.get('/users', admin.getUserList);
 route.post('/users', admin.updateUser);
-route.get('/categories', admin.getCategories);
-route.post('/categories', admin.addCategory);
+route.post('/categories/get', admin.getCategories);
+route.post('/categories/post', admin.addCategory);
 
 
 route.post('/post/create', post.createPost);
