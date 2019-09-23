@@ -15,10 +15,10 @@ const MY_ROUTES: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'home', component: HomeComponent },
+  // { path: 'home', component: HomeComponent },
   { path: 'users', component: UserlistComponent, canActivate: [TokenGuard, AdminGuard] },
-  { path: 'post', component: PostListComponent, canActivate: [TokenGuard, UserGuard] },
-  { path: 'home/:id', component: PostDetailComponent, canActivate: [TokenGuard, UserGuard] },
+  { path: 'home', component: PostListComponent },
+  { path: 'home/:id', component: PostDetailComponent },
   { path: '**', redirectTo: 'home' }
 ];
 
