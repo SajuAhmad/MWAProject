@@ -2,8 +2,8 @@
 
   <mat-card class=" post-list-card">
     <mat-list >
-      <mat-list-item *ngFor="let name of names; let num = index" [ngStyle]="{'height':'auto','margin-bottom':'10px'}">
-        <app-post-list-item></app-post-list-item>
+      <mat-list-item *ngFor="let post of posts; let num = index" [ngStyle]="{'height':'auto','margin-bottom':'10px'}">
+        <app-post-list-item [item]="post"></app-post-list-item>
            <mat-divider></mat-divider>
       </mat-list-item>
      

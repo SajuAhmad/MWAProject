@@ -16,6 +16,11 @@ import { AuthService } from '../service/auth.service';
 })
 export class DialogComponent {
 
-    constructor(public router: Router, public authService:AuthService){}
+  constructor(public router: Router, public authService: AuthService) { }
 
 }
+
+
+////////////
+/// please put this component in a folder ///
+////////////

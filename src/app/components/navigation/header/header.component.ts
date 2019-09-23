@@ -1,22 +1,20 @@
 import { Component, Output, EventEmitter, ElementRef, Renderer2 } from '@angular/core';
-import { AuthService } from 'src/app/service/auth.service';
 import { PostCreateComponent } from '../../post/post-create/post-create.component';
 import { MatDialog } from '@angular/material';
+import { LogincontrolService } from 'src/app/service/logincontrol.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 export class HeaderComponent {
-  public role: string = '';
 
   @Output() public sidenavToggle = new EventEmitter();
 
-  constructor(private atuhService: AuthService, public dialog: MatDialog) { }
+  constructor(private loginControll: LogincontrolService, public dialog: MatDialog) { }
 
-  ngOnInit() {
-  }
 
   openPostDialog(): void {
     const dialogRef = this.dialog.open(PostCreateComponent, {
@@ -35,46 +33,9 @@ export class HeaderComponent {
     this.sidenavToggle.emit();
   }
 
-
-  userType() {
-    if (this.atuhService.getRole()) {
-      return this.role = this.atuhService.getRole();
-    } else {
-      return this.role = 'visitor';
-    }
-  }
-
-  isAdmin() {
-    console.log(this.atuhService.getRole());
-    if (this.atuhService.getRole() !== 'null' && this.atuhService.getRole() !== 'admin') {
-      return false
-    } else {
-      return true
-    }
-  }
-
-  isVisitor() {
-    if (localStorage.getItem('userToken')) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  isUser() {
-    if (this.atuhService.getRole() !== 'null' && this.atuhService.getRole() !== 'user' || this.atuhService.getRole() !== 'admin') {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  isLogedin() {
-    if (!localStorage.getItem('userToken')) {
-      return false;
-    } else {
-      return true;
-    }
-  }
+  isAdmin() { return this.loginControll.isAdmin() }
+  isVisitor() { return this.loginControll.isVisitor() }
+  isUser() { return this.loginControll.isUser() }
+  isLogedin() { return this.loginControll.isLogedin() }
 
 }

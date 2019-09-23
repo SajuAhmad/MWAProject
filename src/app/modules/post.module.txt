@@ -19,10 +19,8 @@ import { myRoutes } from './routes/app.routes';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './service/auth.service';
 import { TokenInterceptor } from './interceptors/token.interceptor';
-import { MaterialModule } from './modules/material.module';
+import { MaterialModule } from './modules/material/material.module';
 import { TokenGuard } from './guards/tokenguard.guard';
-import { UserGuard } from './guards/user.guard';
-import { AdminGuard } from './guards/admin.guard';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -40,7 +38,8 @@ import { PostCommentComponent } from './components/post/post-comment/post-commen
 import { PostListComponent } from './components/post/post-list/post-list.component';
 import { DialogComponent } from './components/dialog.component';
 import { TextareaAutosizeDirective } from './directives/textarea-autosize.directive';
-
+import { UserGuard } from './guards/user.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 @NgModule({
   declarations: [
@@ -54,11 +53,14 @@ import { TextareaAutosizeDirective } from './directives/textarea-autosize.direct
     LayoutComponent,
     HeaderComponent,
     SidenavListComponent,
+    PostCommentComponent,
+    PostDetailComponent,
     UserlistComponent,
     LogoutComponent,
     DialogComponent,
     PostCreateComponent,
     TextareaAutosizeDirective,
+    UserlistComponent,
     LogoutComponent,
     PostListItemComponent,
   ],

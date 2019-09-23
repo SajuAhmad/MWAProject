@@ -6,9 +6,8 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 })
 export class AuthService {
   private helper = new JwtHelperService();
-  constructor() {
-    // console.log(this.helper.decodeToken(this.getToken()));
-  }
+
+  constructor() { }
 
   getToken() {
     return localStorage.getItem('userToken');
@@ -18,17 +17,27 @@ export class AuthService {
     localStorage.setItem('userToken', token);
   }
 
-  setUsername(username: string) {
-    localStorage.setItem('username', username);
-  }
+  // // Why are you using this?????
+  // setUsername(username: string) {
+  //   localStorage.setItem('username', username);
+  // }
+
+  // getUsername() {
+  //   return localStorage.getItem('username');
+  // }
 
   getUsername() {
-    return localStorage.getItem('username');
+    if (this.getToken()) {
+      const decoded = this.helper.decodeToken(this.getToken());
+      return decoded.username;
+    } else {
+      return 'visitor';
+    }
   }
+
   getRole() {
     if (this.getToken()) {
       const decoded = this.helper.decodeToken(this.getToken());
-      // console.log(decoded.role);
       return decoded.role;
     } else {
       return 'visitor';
