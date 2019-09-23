@@ -5,7 +5,7 @@
 
       <mat-card-title>
         <h1>
-          {{postItem.title}}
+          {{(postItem$ | async).title}}
         </h1>
 
       </mat-card-title>
@@ -16,11 +16,12 @@
       <mat-card-title>Shiba Inu</mat-card-title>
       <mat-card-subtitle>Dog Breed</mat-card-subtitle>
     </mat-card-header>
-    <img [ngStyle]="{'width':'95%','margin-left':'2%'}" mat-card-image [src]="postItem.img" alt="Photo of a Shiba Inu">
+    <img [ngStyle]="{'width':'95%','margin-left':'2%'}" mat-card-image [src]="(postItem$ | async).img"
+      alt="Photo of a Shiba Inu">
     <mat-card-content>
       <div [ngStyle]="{'margin-left':'2%','margin-right':'2%'}"
         [ngClass]="{'post-descrition':true,'post-descrition-less':!isMore,'post-descrition-more':isMore}">
-        {{postItem.desc}}
+        {{(postItem$ | async).desc}}
       </div>
       <br />
       <button [ngStyle]="{'margin-left':'2%'}" mat-raised-button color="primary"

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PostCommentComponent } from '../post-comment/post-comment.component';
 import { Subscription } from 'rxjs';
 import { PostService } from 'src/app/service/post.service';
-
+import { map, filter } from 'rxjs/operators';
 
 
 export interface PostItem {
@@ -23,15 +23,17 @@ export interface PostItem {
   styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent implements OnInit, OnDestroy {
-  postItem: PostItem = {
-    desc: '',
-    img: '',
-    title: '',
-    _id: '',
-    like: 0,
-    unlike: 0,
-    commends: [Object]
-  };
+  postItem$;
+
+  // = {
+  //   desc: '',
+  //   img: '',
+  //   title: '',
+  //   _id: '',
+  //   like: 0,
+  //   unlike: 0,
+  //   commends: [Object]
+  // };
   ngOnDestroy(): void {
     if (this.subscription !== undefined) {
       this.subscription.unsubscribe();
@@ -51,12 +53,14 @@ export class PostDetailComponent implements OnInit, OnDestroy {
 
     const id = this.route.params['_value']['id'];
     if (id != "") {
-      this.subscription = this.postService.getSpecificPost(id).subscribe(res => {
-        console.log(res);
+      this.postItem$ = this.postService.getSpecificPost(id).pipe(filter(res => {
         if (res['status'] == 200) {
-          this.postItem = res['data'];
+          return true;
         }
-      });
+        return false;
+      }),
+        map(res => res['data'])
+      );
     }
 
 

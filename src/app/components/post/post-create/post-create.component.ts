@@ -54,11 +54,13 @@ export class PostCreateComponent implements OnInit {
 
       if (data['status'] == 200) {
         this.dialogRef.close();
-        if (window.location.href == "http://localhost:4200/post") {
-          window.location.reload();
-        } else {
-          this.router.navigate(['post']);
-        }
+        this.postService.finishRequest();
+        this.router.navigate(['home']);
+        // if (window.location.href == "http://localhost:4200/post") {
+        //   window.location.reload();
+        // } else {
+      
+        // }
         console.log(window.location.href);
 
 
