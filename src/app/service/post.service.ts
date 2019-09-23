@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
+  emitter = new EventEmitter();
+  emitterComment = new EventEmitter();
   constructor(public http: HttpClient) { }
 
   createPost(data: string) {
@@ -20,5 +22,18 @@ export class PostService {
     console.log(url)
     return this.http.get(url);
   }
+
+  commendPost(data: string) {
+    return this.http.post('http://localhost:1000/api/post/comment', data);
+  }
+
+  finishCreatePostRequest() {
+    this.emitter.emit();
+  }
+
+  finishCreateCommendRequest() {
+    this.emitterComment.emit();
+  }
+
 
 }
