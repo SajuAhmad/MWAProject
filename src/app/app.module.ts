@@ -25,7 +25,7 @@ import { AdminGuard } from './guards/admin.guard';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/register/signup.component';
+// import { SignupComponent } from './components/register/signup.component';
 import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { HeaderComponent } from './components/navigation/header/header.component';
@@ -35,7 +35,7 @@ import { PostListItemComponent } from './components/post/post-list-item/post-lis
 import { PostCreateComponent } from './components/post/post-create/post-create.component';
 import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
 import { PostListComponent } from './components/post/post-list/post-list.component';
-import { DialogComponent } from './components/dialog/dialog.component';
+// import { DialogComponent } from './components/dialog/dialog.component';
 import { TextareaAutosizeDirective } from './directives/textarea-autosize.directive';
 
 
@@ -43,7 +43,7 @@ import { TextareaAutosizeDirective } from './directives/textarea-autosize.direct
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent,
+    // SignupComponent,
     HomeComponent,
     PostDetailComponent,
     PostCommentComponent,
@@ -51,7 +51,7 @@ import { TextareaAutosizeDirective } from './directives/textarea-autosize.direct
     LayoutComponent,
     HeaderComponent,
     SidenavListComponent,
-    DialogComponent,
+    // DialogComponent,
     PostCreateComponent,
     TextareaAutosizeDirective,
     PostListItemComponent,
@@ -76,7 +76,7 @@ import { TextareaAutosizeDirective } from './directives/textarea-autosize.direct
     MatSelectModule,
   ],
 
-  entryComponents: [PostCommentComponent, PostCreateComponent, DialogComponent],
+  entryComponents: [PostCommentComponent, PostCreateComponent],
   providers: [
     AuthGuard,
     {

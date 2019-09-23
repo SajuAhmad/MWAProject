@@ -20,6 +20,7 @@ export class SignupComponent implements OnInit {
   private subscription1: Subscription;
   private subscription2: Subscription;
   dialogRef: MatDialogRef<DialogComponent>;
+  private regMessage = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -71,17 +72,19 @@ export class SignupComponent implements OnInit {
     this.subscription2 = this.chkSignup
       .insertUser(this.registerForm.value)
       .subscribe(data => {
-        console.log('chkSignup.insertUser():' + data)
-        //this.alertService.success('Registration successful', true);
-        this.openDialog()
-        setTimeout(() => {
-          this.router.navigate(['login']);
-          this.dialogRef.close();
-        }, 1500);
+        this.regMessage = 'user added successfully';
+        // console.log('chkSignup.insertUser():' + data)
+        // // this.alertService.success('Registration successful', true);
+        // this.openDialog()
+        // setTimeout(() => {
+        //   this.router.navigate(['login']);
+        //   this.dialogRef.close();
+        // }, 200);
         //new DialogComponent(this.router,this.authService, this)
 
 
       }, err => {
+        this.regMessage = 'user cannot be added at this time';
         //this.alertService.error(err);
       });
 
