@@ -12,8 +12,7 @@ export interface PostItem {
   img: string,
   title: string,
   _id: string,
-  like: number,
-  unlike: number,
+  likes:[Object],
   commends: [Object]
 }
 
@@ -28,8 +27,7 @@ export class PostDetailComponent implements OnInit, OnDestroy {
     img: '',
     title: '',
     _id: '',
-    like: 0,
-    unlike: 0,
+    likes: [Object],
     commends: [Object]
   };
   ngOnDestroy(): void {
@@ -42,6 +40,8 @@ export class PostDetailComponent implements OnInit, OnDestroy {
   isMore = false;
   moreButtonTitle = "MORE";
   private id;
+  liked = false;
+
   private subscription: Subscription;
   constructor(private route: ActivatedRoute, private authService: AuthService, public dialog: MatDialog, public postService: PostService) {
 
@@ -62,9 +62,32 @@ export class PostDetailComponent implements OnInit, OnDestroy {
         console.log(res);
         if (res['status'] == 200) {
           this.postItem = res['data'];
+          this.filterLike();
         }
       });
     }
+  }
+
+  filterLike() {
+   
+    for (const o of this.postItem['likes']) {
+    
+      if (o["username"] == this.authService.getUsername()) {
+        this.liked = true;
+      } else {
+        this.liked = false;
+      }
+    }
+
+  }
+
+  like() {
+    if (this.liked == false) {
+
+    } else {
+
+    }
+
   }
 
 

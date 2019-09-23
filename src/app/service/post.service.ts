@@ -27,6 +27,14 @@ export class PostService {
     return this.http.post('http://localhost:1000/api/post/comment', data);
   }
 
+  likeRequest(data: string) {
+    return this.http.post('http://localhost:1000/api/post/like', data);
+  }
+
+  unlikeRequest(data: string) {
+    return this.http.post('http://localhost:1000/api/post/unlike', data);
+  }
+
   finishCreatePostRequest() {
     this.emitter.emit();
   }
