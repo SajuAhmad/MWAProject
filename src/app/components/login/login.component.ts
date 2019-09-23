@@ -47,8 +47,9 @@ export class LoginComponent implements OnDestroy, OnDestroy {
     this.subscription = this.chkSignup.loginCheck(this.loginForm.value).subscribe((data: any) => {
       if (data.token) {
         this.authService.setToken(data.token)
-        this.authService.setUsername(this.loginForm.value.username)
-        console.log('LoginComponent.onSubmit().token:'+data.token);
+        // wahat is the purpose of following line????
+        // this.authService.setUsername(this.loginForm.value.username)
+        console.log('LoginComponent.onSubmit().token:' + data.token);
         //localStorage.setItem('userToken', data.token);
         this.route.navigate(['home']);
       } else {

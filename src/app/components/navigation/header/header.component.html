@@ -7,10 +7,8 @@
 
   <div fxFlex fxLayout fxLayoutAlign="start" fxHide.xs>
     <ul fxLayout fxLayoutGap="15px" class="navigation-items">
-
-      <a [routerLink]="['home']">Home</a>
       <li>
-        <button mat-raised-button color="warn" (click)="openPostDialog()">POST</button>
+        <a [routerLink]="['home']">Home</a>
       </li>
     </ul>
   </div>
@@ -18,18 +16,17 @@
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
     <ul fxLayout fxLayoutGap="15px" class="navigation-items">
       <li>
-        <!-- <a isLoggedin [routerLink]="['logout']">Logout</a> -->
-        <a *ngIf='isLogedin()' [routerLink]="['logout']">Logout</a>
-      </li>
-      <li>
-        <!-- <a isVisitor [routerLink]="['login']">Login</a> -->
         <a *ngIf='isVisitor()' [routerLink]="['login']">Login</a>
       </li>
       <li>
-        <a *ngIf='isAdmin()' [routerLink]="['users']">User List</a>
-        <!-- <a [isAdmin]="userType()" [routerLink]="['users']">User List</a> -->
+        <a *ngIf='isUser()' (click)="openPostDialog()" [routerLink]="['']">Create Article</a>
       </li>
-
+      <li>
+        <a *ngIf='isAdmin()' [routerLink]="['users']">User List</a>
+      </li>
+      <li>
+        <a *ngIf='isLogedin()' [routerLink]="['logout']">Logout</a>
+      </li>
     </ul>
   </div>
 </mat-toolbar>
