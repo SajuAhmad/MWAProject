@@ -88,14 +88,18 @@ export class PostDetailComponent implements OnInit, OnDestroy {
 
     }
 
-    console.log(this.liked);
+  
     if (this.liked == false) {
-      this.postService.likeRequest(obj).subscribe(res => {
-        console.log(res);
+      this.subscription = this.postService.likeRequest(obj).subscribe(res => {
+        if (res['status'] == 200) {
+          this.getDetail();
+        }
       });
     } else {
-      this.postService.unlikeRequest(obj).subscribe(res => {
-        console.log(res);
+      this.subscription = this.postService.unlikeRequest(obj).subscribe(res => {
+        if (res['status'] == 200) {
+          this.getDetail();
+        }
       });
     }
 
