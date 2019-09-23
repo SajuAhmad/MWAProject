@@ -52,6 +52,37 @@ async function likePost(req, res, next) {
 }
 
 
+async function getCategories(req, res) {
+    // console.debug('admin.getCategories():' + JSON.stringify(req.body))
+
+    const data = await req.posts_col.aggregate([{
+            $group: {
+                _id: {
+                    "category": "$category"
+                }
+            }
+        },
+        {
+            $project: {
+                _id: 0,
+                name: '$_id.category'
+            }
+        }
+    ]).toArray().then(data => {
+        // console.log(data)
+        return data;
+    }).catch(err => {
+        // console.log(err);
+        throw new Error(err);
+    })
+    res.json({
+        message: "success",
+        status: 200,
+        data: data
+    })
+
+}
+
 async function unlikePost(req, res, next) {
     const data = req.body;
     await req.posts_col.updateOne({
@@ -121,5 +152,6 @@ module.exports = {
     getPost,
     commendPost,
     likePost,
-    unlikePost
+    unlikePost,
+    getCategories
 }
