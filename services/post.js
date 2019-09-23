@@ -1,61 +1,102 @@
  var ObjectId = require('mongodb').ObjectId;
-async function createPost(req, res, next) {
+ async function createPost(req, res, next) {
 
-    await req.posts_col.insertOne(req.body).then(data => {
-        // console.log(data)
-    }).catch(err => {
-        // console.log(err);
-        throw new Error(err);
-    })
-    console.log("finish post");
-    res.json({
-        message: "success",
-        status: 200
-    })
-}
+     await req.posts_col.insertOne(req.body).then(data => {
+         // console.log(data)
+     }).catch(err => {
+         // console.log(err);
+         throw new Error(err);
+     })
+     console.log("finish post");
+     res.json({
+         message: "success",
+         status: 200
+     })
+ }
 
-async function getPost(req, res, next) {
-    // console.log(req);
-    const id = req.params.id;
-    const myData = await req.posts_col.findOne({
-        _id: ObjectId(id)
-    }).then(data => {
-        // console.log(data)
-        return data;
-    }).catch(err => {
-        // console.log(err);
-        throw new Error(err);
-    })
-    console.log(myData);
-    res.json({
-        message: "success",
-        status: 200,
-        data: myData
-    })
-}
+ async function getPost(req, res, next) {
+     // console.log(req);
+     const id = req.params.id;
+     const myData = await req.posts_col.findOne({
+         _id: ObjectId(id)
+     }).then(data => {
+         // console.log(data)
+         return data;
+     }).catch(err => {
+         // console.log(err);
+         throw new Error(err);
+     })
+     console.log(myData);
+     res.json({
+         message: "success",
+         status: 200,
+         data: myData
+     })
+ }
 
-async function getPostList(req, res, next) {
-    console.log(req.body);
+ async function getPostList(req, res, next) {
+     console.log(req.body);
 
-    const datas = await req.posts_col.find({}).sort({
-        'like': -1
-    }).limit(10).toArray().then(data => {
-        // console.log(data)
-        return data;
-    }).catch(err => {
-        // console.log(err);
-        throw new Error(err);
-    })
-    console.log(datas);
-    res.json({
-        message: "success",
-        status: 200,
-        data: datas
-    })
-}
+     const datas = await req.posts_col.find({}).sort({
+         'like': -1
+     }).limit(50).toArray().then(data => {
+         // console.log(data)
+         return data;
+     }).catch(err => {
+         // console.log(err);
+         throw new Error(err);
+     })
+     console.log(datas);
+     res.json({
+         message: "success",
+         status: 200,
+         data: datas
+     })
+ }
 
-module.exports = {
-    createPost,
-    getPostList,
-    getPost
-}
+
+
+ async function commendPost(req, res, next) {
+
+     await db.posts.updateOne({
+         _id: ObjectId(req.body.id)
+     }, {
+         $push: {
+             commends: {
+                 "username": req.body.username,
+                 "desc": req.body.comment
+             }
+         }
+     }).then(data => data).catch(error => {
+         throw new Error(error);
+     })
+     res.json({
+         message: "success",
+         status: 200,
+     });
+
+ }
+
+ async function checkComment(req, res, next) {
+     console.log(req.body);
+
+     res.json({});
+     // req.posts_col.posts.aggregate([{
+     //     $match: {
+     //         _id: ObjectId('5d88f411cc12180ed44b2a0c'),
+     //         commends: {
+     //             $elemMatch: {
+     //                 username: 'max'
+     //             }
+     //         }
+     //     },
+
+     // }])
+ }
+
+ module.exports = {
+     createPost,
+     getPostList,
+     getPost,
+     commendPost
+ }

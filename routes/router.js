@@ -12,6 +12,7 @@ route.post('/login', login.loginCheck);
 route.post('/post', post.createPost);
 route.get('/post', post.getPostList);
 route.get('/post/:id', post.getPost);
+route.post('/post/comment', post.commendPost);
 
 route.get('/protected', admin.getUserList);
 
