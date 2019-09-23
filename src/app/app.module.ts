@@ -15,7 +15,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { myRoutes } from './routes/app.routes';
 import { AuthGuard } from './guards/auth.guard';
@@ -34,8 +33,6 @@ import { SidenavListComponent } from './components/navigation/sidenav-list/siden
 import { PostDetailComponent } from './components/post/post-detail/post-detail.component';
 import { PostListItemComponent } from './components/post/post-list-item/post-list-item.component';
 import { PostCreateComponent } from './components/post/post-create/post-create.component';
-import { AdminPanelComponent } from './components/userlist/adminpanel.component';
-// import { LogoutComponent } from './components/logout/logout.component';
 import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
 import { PostListComponent } from './components/post/post-list/post-list.component';
 import { DialogComponent } from './components/dialog/dialog.component';
@@ -54,7 +51,6 @@ import { TextareaAutosizeDirective } from './directives/textarea-autosize.direct
     LayoutComponent,
     HeaderComponent,
     SidenavListComponent,
-    AdminPanelComponent,
     DialogComponent,
     PostCreateComponent,
     TextareaAutosizeDirective,
@@ -78,7 +74,6 @@ import { TextareaAutosizeDirective } from './directives/textarea-autosize.direct
     MatDialogModule,
     MatIconModule,
     MatSelectModule,
-    MatSlideToggleModule
   ],
 
   entryComponents: [PostCommentComponent, PostCreateComponent, DialogComponent],

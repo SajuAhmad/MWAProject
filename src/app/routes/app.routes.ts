@@ -16,7 +16,7 @@ const MY_ROUTES: Routes = [
   { path: 'home', component: PostListComponent },
   { path: 'home/:id', component: PostDetailComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'admin', component: AdminPanelComponent, canActivate: [TokenGuard, AdminGuard] },
+  { path: 'admin', loadChildren: () => import('../modules/admin.module').then(m => m.AdminModule) },
   { path: '**', redirectTo: 'home' }
 ];
 

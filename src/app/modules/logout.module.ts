@@ -11,6 +11,4 @@ import { RouterModule } from '@angular/router';
     RouterModule.forChild([{ path: '', component: LogoutComponent }])
   ]
 })
-export class LogoutModule {
-  constructor() { console.log('logout module'); }
-}
+export class LogoutModule { }
