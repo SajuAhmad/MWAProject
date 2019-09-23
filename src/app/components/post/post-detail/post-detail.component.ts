@@ -11,6 +11,7 @@ export interface PostItem {
   desc: string,
   img: string,
   title: string,
+  username: string,
   _id: string,
   likes: [Object],
   commends: [Object]
@@ -27,6 +28,7 @@ export class PostDetailComponent implements OnInit, OnDestroy {
     img: '',
     title: '',
     _id: '',
+    username: '',
     likes: [Object],
     commends: [Object]
   };
@@ -41,6 +43,7 @@ export class PostDetailComponent implements OnInit, OnDestroy {
   moreButtonTitle = "MORE";
   private id: string;
   liked = false;
+  count: number;
 
   private subscription: Subscription;
   constructor(private route: ActivatedRoute,
@@ -71,13 +74,20 @@ export class PostDetailComponent implements OnInit, OnDestroy {
   }
 
   filterLike() {
+    this.count = this.postItem['likes'].length;
     for (const o of this.postItem['likes']) {
+      console.log(o);
       if (o["username"] == this.authService.getUsername()) {
         this.liked = true;
+        break;
       } else {
         this.liked = false;
+
       }
+
     }
+
+    
 
   }
 
@@ -88,17 +98,19 @@ export class PostDetailComponent implements OnInit, OnDestroy {
 
     }
 
-  
+
     if (this.liked == false) {
       this.subscription = this.postService.likeRequest(obj).subscribe(res => {
         if (res['status'] == 200) {
-          this.getDetail();
+          this.liked = true;
+          this.count++;
         }
       });
     } else {
       this.subscription = this.postService.unlikeRequest(obj).subscribe(res => {
         if (res['status'] == 200) {
-          this.getDetail();
+          this.liked = false;
+          this.count--;
         }
       });
     }
