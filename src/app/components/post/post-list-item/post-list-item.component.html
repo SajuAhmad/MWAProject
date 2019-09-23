@@ -1,17 +1,16 @@
 <div [ngStyle]="{'position':'relative'}" [ngClass]="{'item':true}">
   <div [ngStyle]="{'position':'relative'}" [ngClass]="{'left-part':true}">
-    <div>
+    <div [ngStyle]="{'overflow':'hidden'}">
       <a [routerLink]="[item._id]" [ngClass]="{'title':true}"> {{item.title}}</a>
     </div>
     <div>
       <p [ngClass]="{'desc':true}">
-            {{item.desc}}
+        {{item.desc}}
       </p>
     </div>
 
   </div>
   <div [ngStyle]="{'position':'relative'}" [ngClass]="{'right-part':true}">
-       <img  [src]="item.img" 
-         [alt]="item.title">
+    <img [src]="item.img" [alt]="item.title">
   </div>
 </div>
