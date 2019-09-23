@@ -1,4 +1,4 @@
-Users
+<h3>User List</h3>
 <table st-table="rowCollection" class="table table-striped">
   <thead>
     <tr>
@@ -6,7 +6,8 @@ Users
       <th>User Name</th>
       <th>First Name</th>
       <th>Last Name</th>
-      <th>Role</th>
+      <th>Role(Admin)</th>
+      <th>Active</th>
     </tr>
   </thead>
   <tbody>
@@ -15,36 +16,30 @@ Users
       <td>{{row.username}}</td>
       <td>{{row.firstname}}</td>
       <td>{{row.lastname}}</td>
-      <td>{{row.role}}</td>
       <td>
-        <button class="material-icons" type="button" ng-click="removeUser(row)">
-          <i class="glyphicon glyphicon-remove-circle">
-          </i>
-        </button>
+        <mat-slide-toggle (change)="onRoleChange(row)" [checked]="row.role === 'admin'"></mat-slide-toggle>
+      </td>
+      <td>
+        <mat-slide-toggle (change)="onStatusChange(row)" [checked]="row.active"></mat-slide-toggle>
       </td>
     </tr>
   </tbody>
 </table>
-
-Categories
+<hr />
+<h3>Category List</h3>
+<mat-form-field class="example-full-width">
+  <input #mycat matInput placeholder="New category" value="">
+</mat-form-field>
+<button mat-button (click)="addCategory()">Add</button>
 <table st-table="rowCollection" class="table table-striped">
   <thead>
     <tr>
-      <th>E-mail</th>
-      <th>User Name</th>
-
+      <th>Category</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let row of categories">
-      <td>{{row.email}}</td>
-      <td>{{row.username}}</td>
-      <td>
-        <button type="button" ng-click="removeUser(row)" class="btn btn-sm btn-danger">
-          <i class="glyphicon glyphicon-remove-circle">
-          </i>
-        </button>
-      </td>
+      <td>{{row.name}}</td>
     </tr>
   </tbody>
 </table>

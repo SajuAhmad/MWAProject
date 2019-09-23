@@ -34,13 +34,13 @@ import { SidenavListComponent } from './components/navigation/sidenav-list/siden
 import { PostDetailComponent } from './components/post/post-detail/post-detail.component';
 import { PostListItemComponent } from './components/post/post-list-item/post-list-item.component';
 import { PostCreateComponent } from './components/post/post-create/post-create.component';
-import { UserlistComponent } from './components/userlist/userlist.component';
+import { AdminPanelComponent } from './components/userlist/adminpanel.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
 import { PostListComponent } from './components/post/post-list/post-list.component';
 import { DialogComponent } from './components/dialog.component';
 import { TextareaAutosizeDirective } from './directives/textarea-autosize.directive';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,7 @@ import { TextareaAutosizeDirective } from './directives/textarea-autosize.direct
     LayoutComponent,
     HeaderComponent,
     SidenavListComponent,
-    UserlistComponent,
+    AdminPanelComponent,
     LogoutComponent,
     DialogComponent,
     PostCreateComponent,
@@ -80,6 +80,7 @@ import { TextareaAutosizeDirective } from './directives/textarea-autosize.direct
     MatDialogModule,
     MatIconModule,
     MatSelectModule,
+    MatSlideToggleModule
   ],
 
   entryComponents: [PostCommentComponent, PostCreateComponent, DialogComponent],
