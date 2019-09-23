@@ -8,23 +8,36 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./userlist.component.css'],
   providers: [SignupService]
 })
-export class UserlistComponent implements OnDestroy {
 
-  public items: Object;
+export class UserlistComponent implements OnInit ,OnDestroy{
   private subscription: Subscription;
+  users: any;
+  categories: any;
 
   constructor(private service: SignupService) {
-    console.log('home component');
+    console.log('UserlistComponent.constructor()')
     this.subscription = this.service.getUserList().subscribe((data: any) => {
-      this.items = data;
+      this.users = data;
+      console.log('UserlistComponent.users'+this.users)
     });
+
+    this.subscription = this.service.getCategories().subscribe((data: any) => {
+      this.users = data;
+      console.log('UserlistComponent.users'+this.users)
+    });
+
+  }
+  removeUser(data: object):void {
+    console.log('UserlistComponent.removeUser()')
   }
 
+  ngOnInit(): void {
+    
+  }
   ngOnDestroy() {
     console.log('protected onDestroy');
     if (this.subscription !== undefined) {
       this.subscription.unsubscribe();
     }
   }
-
 }

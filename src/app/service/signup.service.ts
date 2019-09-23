@@ -27,4 +27,9 @@ export class SignupService {
     return this.http.get('http://localhost:1000/api/protected');
   }
 
+  getCategories() {
+    console.debug('SignupService.getUserList()');
+    return this.http.get('http://localhost:1000/api/categories');
+  }
+  
 }

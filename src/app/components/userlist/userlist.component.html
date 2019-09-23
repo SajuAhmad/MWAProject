@@ -1,3 +1,50 @@
-<div *ngFor="let item of items | keyvalue">
-  {{item.key}}: {{item.value.username}}
-</div>
+Users
+<table st-table="rowCollection" class="table table-striped">
+  <thead>
+    <tr>
+      <th>E-mail</th>
+      <th>User Name</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of users">
+      <td>{{row.email}}</td>
+      <td>{{row.username}}</td>
+      <td>{{row.firstname}}</td>
+      <td>{{row.lastname}}</td>
+      <td>{{row.role}}</td>
+      <td>
+        <button class="material-icons" type="button" ng-click="removeUser(row)">
+          <i class="glyphicon glyphicon-remove-circle">
+          </i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+Categories
+<table st-table="rowCollection" class="table table-striped">
+  <thead>
+    <tr>
+      <th>E-mail</th>
+      <th>User Name</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of categories">
+      <td>{{row.email}}</td>
+      <td>{{row.username}}</td>
+      <td>
+        <button type="button" ng-click="removeUser(row)" class="btn btn-sm btn-danger">
+          <i class="glyphicon glyphicon-remove-circle">
+          </i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
