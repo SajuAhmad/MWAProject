@@ -27,7 +27,6 @@ import { AuthService } from 'src/app/service/auth.service';
   </div>
 </div>
   `,
-  providers: [SignupService],
   styles: []
 })
 

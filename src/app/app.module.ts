@@ -17,7 +17,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { myRoutes } from './routes/app.routes';
 import { AuthGuard } from './guards/auth.guard';
-import { AuthService } from './service/auth.service';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { MaterialModule } from './modules/material.module';
 import { TokenGuard } from './guards/tokenguard.guard';
@@ -85,7 +84,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
   entryComponents: [PostCommentComponent, PostCreateComponent, DialogComponent],
   providers: [
-    AuthService,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
