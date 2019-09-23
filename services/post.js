@@ -39,7 +39,7 @@ async function getPostList(req, res, next) {
 
     const datas = await req.posts_col.find({}).sort({
         'like': -1
-    }).limit(10).toArray().then(data => {
+    }).limit(50).toArray().then(data => {
         // console.log(data)
         return data;
     }).catch(err => {
@@ -54,8 +54,51 @@ async function getPostList(req, res, next) {
     })
 }
 
+
+
+async function commendPost(req, res, next) {
+
+    await db.posts.updateOne({
+        _id: ObjectId(req.body.id)
+    }, {
+        $push: {
+            commends: {
+                "username": req.body.username,
+                "desc": req.body.comment
+            }
+        }
+    }).then(data => data).catch(error => {
+        throw new Error(error);
+    })
+    res.json({
+        message: "success",
+        status: 200,
+    });
+
+}
+
+async function checkComment(req, res, next) {
+    console.log(req.body);
+
+    res.json({});
+    // req.posts_col.posts.aggregate([{
+    //     $match: {
+    //         _id: ObjectId('5d88f411cc12180ed44b2a0c'),
+    //         commends: {
+    //             $elemMatch: {
+    //                 username: 'max'
+    //             }
+    //         }
+    //     },
+
+    // }])
+}
+
 module.exports = {
     createPost,
     getPostList,
-    getPost
+    getPost,
+    commendPost,
+    getCategories
 }
+

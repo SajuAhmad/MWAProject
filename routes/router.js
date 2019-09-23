@@ -19,7 +19,7 @@ route.post('/post/create', post.createPost);
 route.post('/post', post.createPost);
 route.get('/post', post.getPostList);
 route.get('/post/:id', post.getPost);
-
+route.post('/post/comment', post.commendPost);
 
 
 module.exports = route;
