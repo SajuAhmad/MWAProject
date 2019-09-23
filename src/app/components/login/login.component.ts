@@ -17,7 +17,7 @@ import { AuthService } from 'src/app/service/auth.service';
               Username:<br>
               <input formControlName="username" type="text"><br>
               Password:<br>
-              <input formControlName="password" type="password">
+              <input formControlName="password" type="password" autocomplete="on">
               <br><br>
               <input [disabled]="!loginForm.valid" type="submit" value="Login">
               <a routerLink="/signup" class="btn btn-link">Register</a>

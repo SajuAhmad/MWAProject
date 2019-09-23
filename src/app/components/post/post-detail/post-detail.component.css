@@ -47,3 +47,17 @@
   line-height: 1.58;
   color: rgba(0, 0, 0, 0.84);
 }
+
+
+.example-card {
+  width: 100%;
+   /* -webkit-line-clamp: -1 */
+   word-wrap:break-word;
+   
+}
+
+
+.button-liked{
+  background-color: red;
+  color: white;
+}
