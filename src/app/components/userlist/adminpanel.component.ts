@@ -99,7 +99,7 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
 
   asyncCategoryValidator(control: FormControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
     //console.log('SignupComponent.asyncCategoryValidator():'+control.value)
-    
+
     return this.service.getCategories({ name: control.value })
       .pipe(debounceTime(500), map((category: any) => {
         if (category.length > 0) {

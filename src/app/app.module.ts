@@ -6,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './modules/material.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -14,12 +15,11 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { myRoutes } from './routes/app.routes';
 import { AuthGuard } from './guards/auth.guard';
-import { AuthService } from './service/auth.service';
 import { TokenInterceptor } from './interceptors/token.interceptor';
-import { MaterialModule } from './modules/material.module';
 import { TokenGuard } from './guards/tokenguard.guard';
 import { UserGuard } from './guards/user.guard';
 import { AdminGuard } from './guards/admin.guard';
@@ -35,12 +35,12 @@ import { PostDetailComponent } from './components/post/post-detail/post-detail.c
 import { PostListItemComponent } from './components/post/post-list-item/post-list-item.component';
 import { PostCreateComponent } from './components/post/post-create/post-create.component';
 import { AdminPanelComponent } from './components/userlist/adminpanel.component';
-import { LogoutComponent } from './components/logout/logout.component';
+// import { LogoutComponent } from './components/logout/logout.component';
 import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
 import { PostListComponent } from './components/post/post-list/post-list.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { TextareaAutosizeDirective } from './directives/textarea-autosize.directive';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 
 @NgModule({
   declarations: [
@@ -55,11 +55,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     HeaderComponent,
     SidenavListComponent,
     AdminPanelComponent,
-    LogoutComponent,
     DialogComponent,
     PostCreateComponent,
     TextareaAutosizeDirective,
-    LogoutComponent,
     PostListItemComponent,
   ],
   imports: [
@@ -85,7 +83,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
   entryComponents: [PostCommentComponent, PostCreateComponent, DialogComponent],
   providers: [
-    AuthService,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

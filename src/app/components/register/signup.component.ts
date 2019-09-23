@@ -14,7 +14,6 @@ import { DialogComponent } from '../dialog/dialog.component';
   selector: 'signup-app',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
-  providers: [SignupService]
 })
 export class SignupComponent implements OnInit {
   registerForm: FormGroup;

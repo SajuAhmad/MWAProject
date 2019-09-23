@@ -1,6 +1,6 @@
 <!-- <div class="example-container"> -->
 
-<form [formGroup]="myForm" class="post-container" (ngSubmit)="onPost()">
+<form [formGroup]="myForm" class="post-container" >
   <label>Create a new post</label>
   <hr />
   <mat-form-field>
@@ -21,14 +21,14 @@
 
   <mat-form-field>
     <mat-select placeholder="Select" formControlName="category" required>
-      <mat-option value="option">MWA</mat-option>
-      <mat-option value="option">WAA</mat-option>
-      <mat-option value="option">WAP</mat-option>
+      <mat-option *ngFor="let category of categories" value="category.name">{{category.name}}</mat-option>
+      <!-- <mat-option value="option">WAA</mat-option>
+      <mat-option value="option">WAP</mat-option> -->
     </mat-select>
   </mat-form-field>
 
  
-    <button type="submit" mat-flat-button color="primary" [disabled]="!myForm.valid">POST</button>
+    <button (click)="onPost()" mat-flat-button color="primary" [disabled]="!myForm.valid">POST</button>
     <br />
     <button (click)="cancel()" mat-flat-button color="accent">Cancel</button>
   

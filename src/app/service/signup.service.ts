@@ -1,24 +1,24 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class SignupService {
 
   constructor(public http: HttpClient) {
   }
 
   isExist(data: Object) {
-    console.debug('SignupService.isExist():'+{data});
-    return this.http.post('http://localhost:1000/api/check', data );
+    console.debug('SignupService.isExist():' + { data });
+    return this.http.post('http://localhost:1000/api/check', data);
   }
 
   insertUser(data: Object) {
-    console.debug('SignupService.insertUser():'+data);
+    console.debug('SignupService.insertUser():' + data);
     return this.http.post('http://localhost:1000/api/insert', data);
   }
 
   loginCheck(data: Object) {
-    console.debug('SignupService.loginCheck():'+data);
+    console.debug('SignupService.loginCheck():' + data);
     return this.http.post('http://localhost:1000/api/login', data);
   }
 
@@ -27,7 +27,7 @@ export class SignupService {
     return this.http.get('http://localhost:1000/api/users');
   }
 
-  updateUser(data: object){
+  updateUser(data: object) {
     console.debug('SignupService.getUserList()');
     return this.http.post('http://localhost:1000/api/users', data);
   }
@@ -38,13 +38,13 @@ export class SignupService {
   }
 
   addCategory(data: object) {
-    console.debug('SignupService.addCategory():'+data);
+    console.debug('SignupService.addCategory():' + data);
     return this.http.post('http://localhost:1000/api/categories/post', data);
   }
 
   deleteCategory(data: object) {
-    console.debug('SignupService.deleteCategory():'+data);
+    console.debug('SignupService.deleteCategory():' + data);
     return this.http.post('http://localhost:1000/api/categories/delete', data);
   }
-  
+
 }
