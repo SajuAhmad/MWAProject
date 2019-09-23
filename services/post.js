@@ -35,7 +35,7 @@ async function getPost(req, res, next) {
 }
 
 async function getPostList(req, res, next) {
-    // console.log(req.body);
+    console.log(req.body);
 
     const datas = await req.posts_col.find({}).sort({
         'like': -1
@@ -46,7 +46,7 @@ async function getPostList(req, res, next) {
         // console.log(err);
         throw new Error(err);
     })
-    // console.log(datas);
+    console.log(datas);
     res.json({
         message: "success",
         status: 200,
@@ -55,6 +55,45 @@ async function getPostList(req, res, next) {
 }
 
 
+
+async function commendPost(req, res, next) {
+
+    await db.posts.updateOne({
+        _id: ObjectId(req.body.id)
+    }, {
+        $push: {
+            commends: {
+                "username": req.body.username,
+                "desc": req.body.comment
+            }
+        }
+    }).then(data => data).catch(error => {
+        throw new Error(error);
+    })
+    res.json({
+        message: "success",
+        status: 200,
+    });
+
+}
+
+async function checkComment(req, res, next) {
+    console.log(req.body);
+
+    res.json({});
+    // req.posts_col.posts.aggregate([{
+    //     $match: {
+    //         _id: ObjectId('5d88f411cc12180ed44b2a0c'),
+    //         commends: {
+    //             $elemMatch: {
+    //                 username: 'max'
+    //             }
+    //         }
+    //     },
+
+    // }])
+}
+
 async function getCategories(req, res) {
     console.debug('post.getCategories():' + JSON.stringify(req.body))
     try {
@@ -62,15 +101,20 @@ async function getCategories(req, res) {
         res.status(200).json(result);
     } catch (e) {
         console.log(e);
-        res.status(200).json({ msg: 'failed to process request' });
+        res.status(200).json({
+            msg: 'failed to process request'
+        });
     }
 
 
 
 }
+
 module.exports = {
     createPost,
     getPostList,
     getPost,
+    commendPost,
     getCategories
 }
+
