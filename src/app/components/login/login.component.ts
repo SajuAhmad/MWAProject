@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/service/auth.service';
   <div class="container">
   <div class="row">
       <div class="col-xs-10">
-          <h1>Login Form</h1>
+          <h1>Login</h1>
           <hr>
             <form [formGroup]="loginForm" (ngSubmit) = "onSubmit()">
               Username:<br>

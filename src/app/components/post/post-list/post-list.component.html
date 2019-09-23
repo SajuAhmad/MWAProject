@@ -6,14 +6,14 @@
 <div class="post-list-background">
   <div [ngStyle]="{'width':'100%'}">
     <div [ngClass]="{'top':true}">
-      <button mat-button (click)="openCommentDialog()" mat-flat-button color="accent">TOP</button>
+      <button mat-button (click)="getTop()" mat-flat-button color="accent">TOP 10</button>
     </div>
     <div [ngClass]="{'category':true}">
 
       <mat-form-field>
         <mat-label>Choose Category</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let category of categories" [value]="category.name">
+        <mat-select (valueChange)="valueChange($event)">
+          <mat-option *ngFor="let category of categories"  [value]="category.name">
             {{category.name}}
           </mat-option>
         </mat-select>
