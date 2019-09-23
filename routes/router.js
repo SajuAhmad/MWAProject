@@ -24,6 +24,7 @@ route.post('/post/comment', post.commendPost);
 route.post('/post/like', post.likePost);
 route.post('/post/unlike', post.unlikePost); 
 route.post('/post/getCategories', post.getCategories);
+route.post('/post/categoryList', post.getCategoryList);
 
 
 module.exports = route;
