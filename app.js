@@ -60,7 +60,7 @@ app.use((req, res, next) => {
 });
 // check token for every request
 app.use(async (req, res, next) => {
-    console.log(req.url);
+    //console.log(req.url);
     if (req.url == '/api/users') {
         if (req.headers.authorization && jwt.verify(req.headers.authorization, 'very secret')) {
             next();
