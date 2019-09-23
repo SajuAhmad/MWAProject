@@ -78,7 +78,7 @@ export class SignupComponent implements OnInit {
         setTimeout(() => {
           this.router.navigate(['login']);
           this.dialogRef.close();
-        }, 2500);
+        }, 1500);
         //new DialogComponent(this.router,this.authService, this)
 
 
