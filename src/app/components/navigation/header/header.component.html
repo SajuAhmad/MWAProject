@@ -15,17 +15,17 @@
 
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
     <ul fxLayout fxLayoutGap="15px" class="navigation-items">
-      <li>
-        <a *ngIf='isVisitor()' [routerLink]="['login']">Login</a>
+      <li *ngIf='isVisitor()'>
+        <a [routerLink]="['login']">Login</a>
       </li>
-      <li>
-        <a *ngIf='isUser()' (click)="openPostDialog()" [routerLink]="['']">Create Article</a>
+      <li *ngIf='isUser()'>
+        <a (click)="openPostDialog()" [routerLink]="['']">Create Article</a>
       </li>
-      <li>
-        <a *ngIf='isAdmin()' [routerLink]="['admin']">User List</a>
+      <li *ngIf='isAdmin()'>
+        <a [routerLink]="['admin']">User List</a>
       </li>
-      <li>
-        <a *ngIf='isLogedin()' [routerLink]="['logout']">Logout</a>
+      <li *ngIf='isLogedin()'>
+        <a [routerLink]="['logout']">Logout</a>
       </li>
     </ul>
   </div>
