@@ -7,7 +7,6 @@ import { AdminGuard } from '../guards/admin.guard';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [AdminPanelComponent],
   imports: [

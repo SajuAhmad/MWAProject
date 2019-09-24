@@ -30,7 +30,7 @@ import { AuthService } from 'src/app/service/auth.service';
   styles: []
 })
 
-export class LoginComponent implements OnDestroy, OnDestroy {
+export class LoginComponent implements OnDestroy {
   public loginForm: FormGroup;
   private subscription: Subscription;
 
@@ -46,10 +46,7 @@ export class LoginComponent implements OnDestroy, OnDestroy {
     this.subscription = this.chkSignup.loginCheck(this.loginForm.value).subscribe((data: any) => {
       if (data.token) {
         this.authService.setToken(data.token)
-        // wahat is the purpose of following line????
-        // this.authService.setUsername(this.loginForm.value.username)
         console.log('LoginComponent.onSubmit().token:' + data.token);
-        //localStorage.setItem('userToken', data.token);
         this.route.navigate(['home']);
       } else {
         console.log('LoginComponent.onSubmit(). NO TOKEN');

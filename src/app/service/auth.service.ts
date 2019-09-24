@@ -7,8 +7,6 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 export class AuthService {
   private helper = new JwtHelperService();
 
-  constructor() { }
-
   getToken() {
     return localStorage.getItem('userToken');
   }
@@ -16,15 +14,6 @@ export class AuthService {
   setToken(token: string) {
     localStorage.setItem('userToken', token);
   }
-
-  // // Why are you using this?????
-  // setUsername(username: string) {
-  //   localStorage.setItem('username', username);
-  // }
-
-  // getUsername() {
-  //   return localStorage.getItem('username');
-  // }
 
   getUsername() {
     if (this.getToken()) {

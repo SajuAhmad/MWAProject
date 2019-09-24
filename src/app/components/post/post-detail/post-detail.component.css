@@ -10,8 +10,6 @@
   min-width: 400px;
 }
 
-
-
 .post-header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
@@ -48,14 +46,11 @@
   color: rgba(0, 0, 0, 0.84);
 }
 
-
 .example-card {
   width: 100%;
    /* -webkit-line-clamp: -1 */
    word-wrap:break-word;
-   
 }
-
 
 .button-liked{
   background-color: red;

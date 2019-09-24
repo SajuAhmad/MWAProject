@@ -6,8 +6,6 @@ import { DialogComponent } from '../components/dialog/dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material';
 
-
-
 @NgModule({
   declarations: [SignupComponent, DialogComponent],
   imports: [

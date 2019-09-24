@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class SignupService {
-
-  constructor(public http: HttpClient) {
-  }
+  constructor(public http: HttpClient) { }
 
   isExist(data: Object) {
     console.debug('SignupService.isExist():' + { data });

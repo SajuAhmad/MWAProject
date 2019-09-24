@@ -5,7 +5,6 @@ import { PostCommentComponent } from '../post-comment/post-comment.component';
 import { Subscription } from 'rxjs';
 import { PostService } from 'src/app/service/post.service';
 import { AuthService } from 'src/app/service/auth.service';
-import { MatDialogRef } from '@angular/material/dialog';
 
 export interface PostItem {
   desc: string,
@@ -15,7 +14,6 @@ export interface PostItem {
   _id: string,
   category: string,
   likes: [Object],
-
   commends: [Object]
 }
 
@@ -35,11 +33,6 @@ export class PostDetailComponent implements OnInit, OnDestroy {
     likes: [Object],
     commends: [Object]
   };
-  ngOnDestroy(): void {
-    if (this.subscription !== undefined) {
-      this.subscription.unsubscribe();
-    }
-  }
 
   panelOpenState = true;
   isMore = false;
@@ -47,13 +40,10 @@ export class PostDetailComponent implements OnInit, OnDestroy {
   private id: string;
   liked = false;
   count: number;
-
   private subscription: Subscription;
   constructor(private route: ActivatedRoute,
     private authService: AuthService, public dialog: MatDialog,
-    public postService: PostService) {
-
-  }
+    public postService: PostService) { }
 
   ngOnInit() {
     this.postService.emitterComment.subscribe(() => {
@@ -62,12 +52,17 @@ export class PostDetailComponent implements OnInit, OnDestroy {
     this.getDetail();
   }
 
+  ngOnDestroy(): void {
+    if (this.subscription !== undefined) {
+      this.subscription.unsubscribe();
+    }
+  }
 
   getDetail() {
     this.id = this.route.params['_value']['id'];
     if (this.id != "") {
       this.subscription = this.postService.getSpecificPost(this.id).subscribe(res => {
-        console.log(res);
+        // console.log(res);
         if (res['status'] == 200) {
           this.postItem = res['data'];
           this.filterLike();
@@ -79,28 +74,21 @@ export class PostDetailComponent implements OnInit, OnDestroy {
   filterLike() {
     this.count = this.postItem['likes'].length;
     for (const o of this.postItem['likes']) {
-      console.log(o);
+      // console.log(o);
       if (o["username"] == this.authService.getUsername()) {
         this.liked = true;
         break;
       } else {
         this.liked = false;
-
       }
-
     }
-
-
-
   }
 
   like() {
     const obj = {
       'id': this.id,
       'username': this.authService.getUsername(),
-
     }
-
 
     if (this.liked == false) {
       this.subscription = this.postService.likeRequest(obj).subscribe(res => {
@@ -117,13 +105,9 @@ export class PostDetailComponent implements OnInit, OnDestroy {
         }
       });
     }
-
   }
 
-
   openCommentDialog(): void {
-
-    // console.log()
     if (this.authService.getUsername() !== "") {
       const dialogRef = this.dialog.open(PostCommentComponent, {
         width: '500px',
@@ -131,19 +115,11 @@ export class PostDetailComponent implements OnInit, OnDestroy {
       });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
-        // this.animal = result;
       });
     } else {
       alert("Please Login In First");
     }
-
-
-
-
   }
-
-
-
 
   more() {
     if (this.moreButtonTitle === "MORE") {
@@ -153,5 +129,4 @@ export class PostDetailComponent implements OnInit, OnDestroy {
     }
     this.isMore = !this.isMore;
   }
-
 }

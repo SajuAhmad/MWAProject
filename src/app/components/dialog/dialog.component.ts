@@ -9,8 +9,6 @@ import { AuthService } from '../../service/auth.service';
       Registered...:)
     </mat-dialog-content>
     <mat-dialog-actions>
-      <!-- <button mat-button (click)="this.router.navigate(['home']);">Go Home</button>
-      <button mat-button (click)="this.router.navigate(['profile']);">Go Profile</button> -->
     </mat-dialog-actions>
   `
 })

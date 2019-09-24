@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
 
 export interface PostItem {
   desc: string,
@@ -13,11 +12,6 @@ export interface PostItem {
   templateUrl: './post-list-item.component.html',
   styleUrls: ['./post-list-item.component.css']
 })
-export class PostListItemComponent implements OnInit {
+export class PostListItemComponent {
   @Input() item: PostItem
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

@@ -4,8 +4,6 @@ import { LoginComponent } from '../components/login/login.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
-
 @NgModule({
   declarations: [LoginComponent],
   imports: [

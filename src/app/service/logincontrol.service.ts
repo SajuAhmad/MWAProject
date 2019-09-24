@@ -5,7 +5,6 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class LogincontrolService {
-
   constructor(private atuhService: AuthService) { }
 
   isAdmin() {

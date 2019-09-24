@@ -1,6 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTabsModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule, MatMenuModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {
+  MatTabsModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatButtonModule,
+  MatListModule,
+  MatMenuModule,
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatCardModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatDialogModule,
+  MatSelectModule
+} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -11,7 +28,16 @@ import { MatTabsModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatBu
     MatToolbarModule,
     CommonModule,
     MatTabsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatDialogModule,
+    MatSelectModule,
+    FlexLayoutModule
   ],
   exports: [
     MatMenuModule,
@@ -19,8 +45,18 @@ import { MatTabsModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatBu
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
+    CommonModule,
     MatTabsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatDialogModule,
+    MatSelectModule,
+    FlexLayoutModule
   ],
   declarations: []
 })

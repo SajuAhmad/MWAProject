@@ -1,5 +1,4 @@
 /* CSS to change Default/'Accent' color */
-
 ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
     background-color: blue; /*replace with your color*/
 }
@@ -9,7 +8,6 @@
 }
 
 /* CSS to change 'Primary' color */
-
 ::ng-deep .mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
     background-color: green;
 }
@@ -19,7 +17,6 @@
 }
 
 /* CSS to change 'Warn' color */
-
 ::ng-deep .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
     background-color: red;
 }

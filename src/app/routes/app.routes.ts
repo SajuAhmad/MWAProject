@@ -2,7 +2,6 @@ import { RouterModule, Routes, PreloadAllModules } from "@angular/router";
 import { PostDetailComponent } from '../components/post/post-detail/post-detail.component';
 import { PostListComponent } from '../components/post/post-list/post-list.component';
 
-
 const MY_ROUTES: Routes = [
   { path: 'login', loadChildren: () => import('../modules/login.module').then(m => m.LoginModule) },
   { path: 'logout', loadChildren: () => import('../modules/logout.module').then(m => m.LogoutModule) },

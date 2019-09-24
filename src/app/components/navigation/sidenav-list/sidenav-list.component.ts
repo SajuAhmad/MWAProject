@@ -21,12 +21,10 @@ export class SidenavListComponent {
     const dialogRef = this.dialog.open(PostCreateComponent, {
       width: '800px',
       height: 'auto',
-      // data: { name: this.name, animal: this.animal }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      // this.animal = result;
     });
   }
 
