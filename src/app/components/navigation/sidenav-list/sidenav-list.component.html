@@ -3,7 +3,7 @@
     <mat-icon>home</mat-icon> <span class="nav-caption">Home</span>
   </a>
   <a *ngIf='isAdmin()' mat-list-item [routerLink]="['users']" (click)="onSidenavClose()">
-    <mat-icon>account_balance</mat-icon><span class="nav-caption">User List</span>
+    <mat-icon>account_balance</mat-icon><span class="nav-caption">Admin</span>
   </a>
   <a *ngIf='isUser()' mat-list-item [routerLink]="['']" (click)="openPostDialog()">
     <mat-icon>account_balance</mat-icon><span class="nav-caption">Create Article</span>

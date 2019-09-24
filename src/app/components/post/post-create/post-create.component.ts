@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -19,15 +19,11 @@ import { SignupService } from 'src/app/service/signup.service';
   templateUrl: './post-create.component.html',
   styleUrls: ['./post-create.component.css']
 })
-export class PostCreateComponent implements OnInit {
+export class PostCreateComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   myForm: FormGroup;
-  // title = new FormControl('', [Validators.required]);
-  // img = new FormControl('', [Validators.nullValidator]);
-  // desc = new FormControl('', [Validators.required]);
   height = '80px';
-
   categories;
   constructor(private router: Router, private authService: AuthService,
     private formBuilder: FormBuilder,
@@ -49,10 +45,9 @@ export class PostCreateComponent implements OnInit {
 
 
   ngOnInit() {
-    this.signupService.getCategories(
+    this.subscription = this.signupService.getCategories(
       {}
     ).subscribe(res => {
-      //console.log(res);
       this.categories = res;
     })
   }
@@ -66,16 +61,17 @@ export class PostCreateComponent implements OnInit {
     };
 
     this.subscription = this.postService.createPost(obj).subscribe(data => {
-
-      if (data['status'] == 200) {
-        this.dialogRef.close();
-        this.postService.finishCreatePostRequest();
-        this.router.navigate(['home']);
-
-        //console.log(window.location.href);
-      }
+      this.showResult(data);
     })
 
+  }
+
+  showResult(data) {
+    if (data['status'] == 200) {
+      this.dialogRef.close();
+      this.postService.finishCreatePostRequest();
+      this.router.navigate(['home']);
+    }
   }
 
   cancel() {
