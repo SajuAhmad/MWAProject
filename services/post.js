@@ -119,7 +119,7 @@ async function getPostList(req, res, next) {
     // console.log(req.body);
     const datas = await req.posts_col.find({}).sort({
         'like': -1
-    }).limit(50).toArray().then(data => {
+    }).limit(10).toArray().then(data => {
         // console.log(data)
         return data;
     }).catch(err => {
