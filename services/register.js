@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-async function check(req, res, next) {
+async function checkUserExist(req, res, next) {
     // console.log('register.check():' + JSON.stringify(req.body));
     try {
         const data = req.users_col.find(req.body);
@@ -32,4 +32,4 @@ async function insertUser(req, res, next) {
     });
 }
 
-module.exports = { check, insertUser }
+module.exports = { checkUserExist, insertUser }
