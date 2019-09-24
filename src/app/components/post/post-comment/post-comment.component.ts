@@ -21,7 +21,6 @@ export class PostCommentComponent implements OnDestroy {
       this.subscription.unsubscribe();
     }
   }
-  private subscription: Subscription;
   myForm: FormGroup;
 
   height = '80px';
