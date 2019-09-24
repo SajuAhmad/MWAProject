@@ -1,21 +1,12 @@
-<form [formGroup]="myForm" class="post-commmend-container" >
+<form [formGroup]="myForm" class="post-commmend-container">
   <label>Create a new commend</label>
   <hr />
-
-
   <mat-form-field>
     <textarea [appTextareaAutosize]="height" matInput placeholder="Enter your desc" autocomplete="off"
       formControlName="comment" required></textarea>
-
     <mat-error *ngIf="myForm.get('comment').invalid">{{getErrorMessage()}}</mat-error>
   </mat-form-field>
-
-  
-
-
   <button (click)="onComment()" mat-flat-button color="primary" [disabled]="!myForm.valid">POST</button>
   <br />
   <button (click)="cancel()" mat-flat-button color="accent">Cancel</button>
-
-
 </form>

@@ -13,7 +13,7 @@ export interface PostItem {
   title: string,
   username: string,
   _id: string,
-  category:string,
+  category: string,
   likes: [Object],
 
   commends: [Object]
@@ -31,7 +31,7 @@ export class PostDetailComponent implements OnInit, OnDestroy {
     title: '',
     _id: '',
     username: '',
-    category:'',
+    category: '',
     likes: [Object],
     commends: [Object]
   };
@@ -90,7 +90,7 @@ export class PostDetailComponent implements OnInit, OnDestroy {
 
     }
 
-    
+
 
   }
 

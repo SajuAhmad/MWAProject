@@ -1,18 +1,13 @@
-<div class=" post-background">
-
+<div class="post-background">
   <mat-card class=" post-card">
     <mat-card-header>
-
       <mat-card-title>
         <h1>
           {{postItem.title}}
         </h1>
       </mat-card-title>
-
     </mat-card-header>
-
     <mat-card-header>
-
       <mat-card-title>
         <h5>
           Author : {{postItem.username}}
@@ -20,10 +15,6 @@
       </mat-card-title>
       <mat-card-subtitle>category: {{postItem.category}}</mat-card-subtitle>
     </mat-card-header>
-
-
-
-
 
     <img [ngStyle]="{'width':'95%','margin-left':'2%'}" mat-card-image [src]="postItem.img" alt="Photo of a Shiba Inu">
     <mat-card-content>
@@ -72,22 +63,10 @@
               </mat-card-content>
               <mat-divider></mat-divider>
             </mat-card>
-
-
-
-
             <!-- </mat-list-item> -->
-
           </div>
-
-
         </mat-list>
       </mat-expansion-panel>
     </mat-accordion>
-
-
   </mat-card>
-
-
-
 </div>
