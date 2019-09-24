@@ -23,22 +23,26 @@ import { AuthService } from 'src/app/service/auth.service';
               <a routerLink="/signup" class="btn btn-link">Register</a>
             </form>
           <hr>
+          <pre>{{error_text}}</pre>
       </div>
   </div>
 </div>
   `,
-  styles: []
+  styles: ['pre { font-weight: bold; color:red }']
 })
 
 export class LoginComponent implements OnDestroy {
   public loginForm: FormGroup;
   private subscription: Subscription;
+  error_text;
+
 
   constructor(private fb: FormBuilder, private chkSignup: SignupService, private route: Router, private authService: AuthService) {
     this.loginForm = fb.group({
       'username': ['', [Validators.required]],
       'password': ['', [Validators.required]]
     });
+    this.error_text = ''
   }
 
   onSubmit(): void {
@@ -49,6 +53,7 @@ export class LoginComponent implements OnDestroy {
         //console.log('LoginComponent.onSubmit().token:' + data.token);
         this.route.navigate(['home']);
       } else {
+        this.error_text = 'Username or(and) password is not correct!!!'
         //console.log('LoginComponent.onSubmit(). NO TOKEN');
       }
     });

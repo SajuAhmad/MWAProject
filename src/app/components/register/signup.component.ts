@@ -4,9 +4,6 @@ import { SignupService } from '../../service/signup.service';
 import { Subscription, Observable } from 'rxjs';
 import { map, debounceTime } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { AuthService } from '../../service/auth.service';
-import { MatDialogRef, MatDialog } from '@angular/material';
-import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'signup-app',
@@ -17,15 +14,12 @@ export class SignupComponent {
   registerForm: FormGroup;
   private subscription1: Subscription;
   private subscription2: Subscription;
-  dialogRef: MatDialogRef<DialogComponent>;
-  private regMessage = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private chkSignup: SignupService,
-    private authService: AuthService,
-    private dialog: MatDialog) {
+    private chkSignup: SignupService
+  ) {
 
     this.registerForm = this.formBuilder.group({
       email: ['example@email.com',
@@ -50,24 +44,16 @@ export class SignupComponent {
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
 
-  openDialog() {
-    this.dialogRef = this.dialog.open(DialogComponent);
-  }
-
   onSubmit(): void {
     // console.log('SignupComponent.onSubmit()');
     this.subscription2 = this.chkSignup
       .insertUser(this.registerForm.value)
       .subscribe(data => {
-        this.regMessage = 'user added successfully';
+        alert('Registered successfully');
+        this.router.navigate(['login']);
       }, err => {
-        this.regMessage = 'user cannot be added at this time';
+        alert(' ohh...:( something went wrong!!!');
       });
-    // redirect to home if already logged in
-    if (this.authService.getToken() != null) {
-      // console.log('authService.getToken():' + this.authService.getToken())
-      this.router.navigate(['home']);
-    }
   }
 
   asyncEmailValidator(control: FormControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {

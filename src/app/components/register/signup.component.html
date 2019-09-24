@@ -7,7 +7,7 @@
     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
       <div *ngIf="f.email.errors.required">Email is required</div>
     </div>
-    <span *ngIf="registerForm.get('email').errors">Email exist!</span>
+    <span *ngIf="registerForm.get('email').errors">Email is not valid!</span>
   </div>
   <div class="form-group">
     <label for="username">Username</label>
@@ -53,5 +53,4 @@
     </button>
     <a routerLink="/login" class="btn btn-link">Cancel</a>
   </div>
-  {{regMessage}}
 </form>
