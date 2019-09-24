@@ -1,7 +1,7 @@
 import { RouterModule, Routes, PreloadAllModules } from "@angular/router";
 import { LoginComponent } from '../components/login/login.component';
 // import { SignupComponent } from '../components/register/signup.component';
-import { HomeComponent } from '../components/home/home.component';
+// import { HomeComponent } from '../components/home/home.component';
 import { PostDetailComponent } from '../components/post/post-detail/post-detail.component';
 import { PostListComponent } from '../components/post/post-list/post-list.component';
 
@@ -12,7 +12,7 @@ const MY_ROUTES: Routes = [
   { path: 'signup', loadChildren: () => import('../modules/signup.module').then(m => m.SignupModule) },
   { path: 'home', component: PostListComponent },
   { path: 'home/:id', component: PostDetailComponent },
-  { path: 'home', component: HomeComponent },
+  // { path: 'home', component: HomeComponent },
   { path: 'admin', loadChildren: () => import('../modules/admin.module').then(m => m.AdminModule) },
   { path: '**', redirectTo: 'home' }
 ];
