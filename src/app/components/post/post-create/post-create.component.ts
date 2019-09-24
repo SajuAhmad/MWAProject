@@ -57,7 +57,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
     const obj = {
       ...this.myForm.value,
       username: this.authService.getUsername(),
-      'like': 0, 'unlike': 0, commends: []
+      'like': 0, 'unlike': 0, commends: [], likes: [],
     };
 
     this.subscription = this.postService.createPost(obj).subscribe(data => {
