@@ -25,6 +25,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
   myForm: FormGroup;
   height = '80px';
   categories;
+  selectValue;
   constructor(private router: Router, private authService: AuthService,
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<PostCreateComponent>,
@@ -56,10 +57,10 @@ export class PostCreateComponent implements OnInit, OnDestroy {
 
     const obj = {
       ...this.myForm.value,
-      username: this.authService.getUsername(),
-      'like': 0, 'unlike': 0, commends: [], likes: [],
+      username: this.authService.getUsername(), commends: [], likes: [],
     };
 
+    console.log(obj);
     this.subscription = this.postService.createPost(obj).subscribe(data => {
       this.showResult(data);
     })
