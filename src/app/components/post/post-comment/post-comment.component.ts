@@ -43,7 +43,7 @@ export class PostCommentComponent {
       ...this.myForm.value,
       ...this.data
     }
-    console.log(obj);
+    //console.log(obj);
     this.postService.commendPost(obj).subscribe(data => {
       if (data['status'] == 200) {
         this.dialogRef.close();

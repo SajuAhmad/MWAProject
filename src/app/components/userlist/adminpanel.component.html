@@ -30,7 +30,9 @@
 <h3>Category List</h3>
 <div>
   <a *ngFor="let row of categories">
-    <td>{{row.name}} | </td>
+    <td>
+      <pre>| {{row.name}} |</pre>
+    </td>
   </a>
 </div>
 
@@ -44,7 +46,9 @@
     <span>
       <button [disabled]="!myForm.valid" class="btn btn-primary" (click)="addCategory(myForm.get('name'))">
         Add
-      </button></span> -
+      </button>
+    </span> -
+
     <span>
       <button [disabled]="myForm.valid" class="btn btn-primary" (click)="deleteCategory(myForm.get('name'))">
         Delete
