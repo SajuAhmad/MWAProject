@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { PostService } from 'src/app/service/post.service';
 import { Subscription, Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
@@ -18,6 +18,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   categories;
   private subscription: Subscription;
   posts$;
+  selectValue;
 
   constructor(private postService: PostService, private signupService: SignupService, ) {
     this.postService.getCategory(
@@ -31,7 +32,10 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   getTop() {
+    // console.log(this.selectValue);
+    this.selectValue = undefined;
     this.getPostList();
+
   }
 
   ngOnInit() {
@@ -48,7 +52,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   valueChange(o) {
-    // console.log(o);
+    console.log(o);
     this.posts$ = this.postService.getCategoryList({ category: o }).pipe(filter(res => {
       if (res['status'] == 200) {
         return true;
