@@ -85,30 +85,37 @@ export class PostDetailComponent implements OnInit, OnDestroy {
   }
 
   like() {
-    const obj = {
-      'id': this.id,
-      'username': this.authService.getUsername(),
+    console.log(this.authService.getUsername() );
+    if (this.authService.getUsername() !== "" && this.authService.getUsername() !== "visitor") {
+      const obj = {
+        'id': this.id,
+        'username': this.authService.getUsername(),
+      }
+
+      if (this.liked == false) {
+        this.subscription = this.postService.likeRequest(obj).subscribe(res => {
+          if (res['status'] == 200) {
+            this.liked = true;
+            this.count++;
+          }
+        });
+      } else {
+        this.subscription = this.postService.unlikeRequest(obj).subscribe(res => {
+          if (res['status'] == 200) {
+            this.liked = false;
+            this.count--;
+          }
+        });
+      }
+    } else {
+      alert("Please Login In First");
     }
 
-    if (this.liked == false) {
-      this.subscription = this.postService.likeRequest(obj).subscribe(res => {
-        if (res['status'] == 200) {
-          this.liked = true;
-          this.count++;
-        }
-      });
-    } else {
-      this.subscription = this.postService.unlikeRequest(obj).subscribe(res => {
-        if (res['status'] == 200) {
-          this.liked = false;
-          this.count--;
-        }
-      });
-    }
+
   }
 
   openCommentDialog(): void {
-    if (this.authService.getUsername() !== "") {
+    if (this.authService.getUsername() !== "" && this.authService.getUsername() !== "visitor") {
       const dialogRef = this.dialog.open(PostCommentComponent, {
         width: '500px',
         data: { id: this.id }

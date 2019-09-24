@@ -16,7 +16,8 @@ import {
   MatDividerModule,
   MatExpansionModule,
   MatDialogModule,
-  MatSelectModule
+  MatSelectModule,
+  
 } from '@angular/material';
 
 @NgModule({
@@ -37,7 +38,8 @@ import {
     MatExpansionModule,
     MatDialogModule,
     MatSelectModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    
   ],
   exports: [
     MatMenuModule,
