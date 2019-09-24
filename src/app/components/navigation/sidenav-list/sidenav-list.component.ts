@@ -24,7 +24,7 @@ export class SidenavListComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      //console.log('SidenavListComponent.openPostDialog():The dialog was closed');
     });
   }
 

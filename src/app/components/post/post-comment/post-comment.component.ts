@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { PostService } from 'src/app/service/post.service';
@@ -14,8 +14,13 @@ export interface DialogData {
   templateUrl: './post-comment.component.html',
   styleUrls: ['./post-comment.component.css']
 })
-export class PostCommentComponent {
+export class PostCommentComponent implements OnDestroy {
   private subscription: Subscription;
+  ngOnDestroy(): void {
+    if (this.subscription !== undefined) {
+      this.subscription.unsubscribe();
+    }
+  }
   myForm: FormGroup;
 
   height = '80px';
@@ -43,8 +48,8 @@ export class PostCommentComponent {
       ...this.myForm.value,
       ...this.data
     }
-    console.log(obj);
-    this.postService.commendPost(obj).subscribe(data => {
+    //console.log(obj);
+    this.subscription = this.postService.commendPost(obj).subscribe(data => {
       if (data['status'] == 200) {
         this.dialogRef.close();
         this.postService.finishCreateCommendRequest();

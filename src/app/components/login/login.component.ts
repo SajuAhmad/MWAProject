@@ -42,20 +42,20 @@ export class LoginComponent implements OnDestroy {
   }
 
   onSubmit(): void {
-    console.log('LoginComponent.onSubmit()');
+    //console.log('LoginComponent.onSubmit()');
     this.subscription = this.chkSignup.loginCheck(this.loginForm.value).subscribe((data: any) => {
       if (data.token) {
         this.authService.setToken(data.token)
-        console.log('LoginComponent.onSubmit().token:' + data.token);
+        //console.log('LoginComponent.onSubmit().token:' + data.token);
         this.route.navigate(['home']);
       } else {
-        console.log('LoginComponent.onSubmit(). NO TOKEN');
+        //console.log('LoginComponent.onSubmit(). NO TOKEN');
       }
     });
   }
 
   ngOnDestroy(): void {
-    console.log('service ondestroy');
+    //console.log('LoginComponent.ngOnDestroy()');
     if (this.subscription !== undefined) { this.subscription.unsubscribe(); }
   }
 
