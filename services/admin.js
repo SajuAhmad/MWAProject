@@ -1,7 +1,7 @@
 async function getUserList(req, res, next) {
-    console.debug('admin.getUserList():' + JSON.stringify(req.body));
+    // console.debug('admin.getUserList():' + JSON.stringify(req.body));
     try {
-        const result = await req.users_col.find({},{projection: {password:0, _id:0}}).toArray();
+        const result = await req.users_col.find({}, { projection: { password: 0, _id: 0 } }).toArray();
         res.status(200).json(result);
     } catch (e) {
         console.log(e);
@@ -10,9 +10,9 @@ async function getUserList(req, res, next) {
 }
 
 async function getCategories(req, res) {
-    console.debug('admin.getCategories():' + JSON.stringify(req.body))
+    // console.debug('admin.getCategories():' + JSON.stringify(req.body))
     try {
-        const result = await req.cats_col.find(req.body,{projection: {_id:0}}).toArray();
+        const result = await req.cats_col.find(req.body, { projection: { _id: 0 } }).toArray();
         res.status(200).json(result);
     } catch (e) {
         console.log(e);
@@ -21,43 +21,41 @@ async function getCategories(req, res) {
 }
 
 async function addCategory(req, res) {
-    console.debug('admin.addCategory():' + JSON.stringify(req.body))
-
+    // console.debug('admin.addCategory():' + JSON.stringify(req.body))
     const result = await req.cats_col.insertOne(req.body,
         (err, rslt) => {
-        try {
-            if (err) throw err;
-            res.status(200).json({ "status": 1 });
-        } catch (e) {
-            console.log('Error:\n' + e.errmsg);
-            res.status(200).json({ "status": e.errmsg });
-        }
-    });
+            try {
+                if (err) throw err;
+                res.status(200).json({ "status": 1 });
+            } catch (e) {
+                console.log('Error:\n' + e.errmsg);
+                res.status(200).json({ "status": e.errmsg });
+            }
+        });
 }
 
 async function deleteCategory(req, res) {
-    console.debug('admin.deleteCategory():' + JSON.stringify(req.body))
-
+    // console.debug('admin.deleteCategory():' + JSON.stringify(req.body))
     const result = await req.cats_col.deleteOne(req.body,
         (err, rslt) => {
-        try {
-            if (err) throw err;
-            res.status(200).json({ "status": 1 });
-        } catch (e) {
-            console.log('Error:\n' + e.errmsg);
-            res.status(200).json({ "status": e.errmsg });
-        }
-    });
+            try {
+                if (err) throw err;
+                res.status(200).json({ "status": 1 });
+            } catch (e) {
+                console.log('Error:\n' + e.errmsg);
+                res.status(200).json({ "status": e.errmsg });
+            }
+        });
 }
 
 
 
 async function updateUser(req, res) {
-    console.debug('admin.updateUser():' + JSON.stringify(req.body))
+    // console.debug('admin.updateUser():' + JSON.stringify(req.body))
     const result = await req.users_col.updateOne({ username: req.body.username },
-        {$set: {role: req.body.role, active: req.body.active }}, (err, rslt) => {
+        { $set: { role: req.body.role, active: req.body.active } }, (err, rslt) => {
             try {
-                if (err) 
+                if (err)
                     throw err;
                 res.status(200).json({ "status": 1 });
             } catch (e) {
@@ -67,6 +65,5 @@ async function updateUser(req, res) {
 
         })
 }
-
 
 module.exports = { getUserList, getCategories, addCategory, deleteCategory, updateUser }
