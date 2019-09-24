@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
+
 import {
   MatTabsModule,
   MatSidenavModule,
@@ -58,7 +59,8 @@ import {
     MatExpansionModule,
     MatDialogModule,
     MatSelectModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    // TextareaAutosizeDirective
   ],
   declarations: []
 })
