@@ -22,7 +22,7 @@
         <a (click)="openPostDialog()" [routerLink]="['']">Create Article</a>
       </li>
       <li *ngIf='isAdmin()'>
-        <a [routerLink]="['admin']">User List</a>
+        <a [routerLink]="['admin']">Admin</a>
       </li>
       <li *ngIf='isLogedin()'>
         <a [routerLink]="['logout']">Logout</a>
