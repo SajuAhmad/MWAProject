@@ -67,7 +67,6 @@ import { TextareaAutosizeDirective } from './directives/textarea-autosize.direct
     MatIconModule,
     MatSelectModule,
   ],
-
   entryComponents: [PostCommentComponent, PostCreateComponent],
   providers: [
     AuthGuard,
