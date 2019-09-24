@@ -4,6 +4,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 30f3dca8758d0d8d1b4fe663bf1c7e509d8e1ed4
 import { myRoutes } from './routes/app.routes';
 import { AuthGuard } from './guards/auth.guard';
 import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -28,7 +32,7 @@ import { SidenavListComponent } from './components/navigation/sidenav-list/siden
     HttpClientModule,
     MaterialModule,
     myRoutes,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
 
   providers: [

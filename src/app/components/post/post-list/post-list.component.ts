@@ -22,7 +22,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   constructor(private postService: PostService, private signupService: SignupService, ) {
     this.postService.getCategory(
     ).subscribe(res => {
-      console.log(res);
+      //console.log(res);
       if (res['status'] == 200) {
         this.categories = res["data"];
       }

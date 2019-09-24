@@ -52,7 +52,7 @@ export class PostCreateComponent implements OnInit {
     this.signupService.getCategories(
       {}
     ).subscribe(res => {
-      console.log(res);
+      //console.log(res);
       this.categories = res;
     })
   }
@@ -72,7 +72,7 @@ export class PostCreateComponent implements OnInit {
         this.postService.finishCreatePostRequest();
         this.router.navigate(['home']);
 
-        console.log(window.location.href);
+        //console.log(window.location.href);
       }
     })
 
@@ -88,7 +88,7 @@ export class PostCreateComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    console.log('service ondestroy');
+    //console.log('PostCreateComponent.ngOnDestroy()');
     if (this.subscription !== undefined) { this.subscription.unsubscribe(); }
   }
 }

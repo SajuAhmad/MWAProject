@@ -121,7 +121,7 @@ export class PostDetailComponent implements OnInit, OnDestroy {
         data: { id: this.id }
       });
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
+        //console.log('The dialog was closed');
       });
     } else {
       alert("Please Login In First");
