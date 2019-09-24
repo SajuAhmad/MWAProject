@@ -1,13 +1,13 @@
-var ObjectId = require('mongodb').ObjectId;
-async function createPost(req, res, next) {
+const ObjectId = require('mongodb').ObjectId;
 
+async function createPost(req, res, next) {
     await req.posts_col.insertOne(req.body).then(data => {
         // console.log(data)
     }).catch(err => {
         // console.log(err);
         throw new Error(err);
     })
-    console.log("finish post");
+    // console.log("finish post");
     res.json({
         message: "success",
         status: 200
@@ -52,10 +52,10 @@ async function likePost(req, res, next) {
 }
 
 async function getCategoryList(req, res) {
-console.log(req.body.category)
+    // console.log(req.body.category)
     const data = await req.posts_col.find({
-            category: req.body.category
-        })
+        category: req.body.category
+    })
         .limit(10).toArray().then(data => {
             // console.log(data)
             return data;
@@ -71,21 +71,19 @@ console.log(req.body.category)
 }
 
 async function getCategories(req, res) {
-    // console.debug('admin.getCategories():' + JSON.stringify(req.body))
-
     const data = await req.posts_col.aggregate([{
-            $group: {
-                _id: {
-                    "category": "$category"
-                }
-            }
-        },
-        {
-            $project: {
-                _id: 0,
-                name: '$_id.category'
+        $group: {
+            _id: {
+                "category": "$category"
             }
         }
+    },
+    {
+        $project: {
+            _id: 0,
+            name: '$_id.category'
+        }
+    }
     ]).toArray().then(data => {
         // console.log(data)
         return data;
@@ -98,7 +96,6 @@ async function getCategories(req, res) {
         status: 200,
         data: data
     })
-
 }
 
 async function unlikePost(req, res, next) {
@@ -118,10 +115,8 @@ async function unlikePost(req, res, next) {
     });
 }
 
-
 async function getPostList(req, res, next) {
-    console.log(req.body);
-
+    // console.log(req.body);
     const datas = await req.posts_col.find({}).sort({
         'like': -1
     }).limit(50).toArray().then(data => {
@@ -131,7 +126,7 @@ async function getPostList(req, res, next) {
         // console.log(err);
         throw new Error(err);
     })
-    console.log(datas);
+    // console.log(datas);
     res.json({
         message: "success",
         status: 200,
@@ -142,7 +137,6 @@ async function getPostList(req, res, next) {
 
 
 async function commendPost(req, res, next) {
-
     await req.posts_col.updateOne({
         _id: ObjectId(req.body.id)
     }, {
@@ -159,18 +153,6 @@ async function commendPost(req, res, next) {
         message: "success",
         status: 200,
     });
-
 }
 
-
-
-module.exports = {
-    createPost,
-    getPostList,
-    getPost,
-    commendPost,
-    likePost,
-    unlikePost,
-    getCategories,
-    getCategoryList
-}
+module.exports = { createPost, getPostList, getPost, commendPost, likePost, unlikePost, getCategories, getCategoryList }
