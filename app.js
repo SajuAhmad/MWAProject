@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
-const router = require('./routes/router')
+const router = require('./routes/rootRouter')
 const privates = require('./privates')
 const jwt = require('jsonwebtoken');
 
