@@ -24,7 +24,6 @@ import { UserGuard } from './guards/user.guard';
 import { AdminGuard } from './guards/admin.guard';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { HeaderComponent } from './components/navigation/header/header.component';
 import { SidenavListComponent } from './components/navigation/sidenav-list/sidenav-list.component';
@@ -39,7 +38,6 @@ import { TextareaAutosizeDirective } from './directives/textarea-autosize.direct
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     PostDetailComponent,
     PostCommentComponent,
     PostListComponent,
