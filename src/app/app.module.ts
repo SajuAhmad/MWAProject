@@ -1,20 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
-import { MatInputModule } from '@angular/material/input';
-import { MatCardModule } from '@angular/material/card';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatSelectModule } from '@angular/material/select';
-import { MatIconModule } from '@angular/material';
-import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { myRoutes } from './routes/app.routes';
 import { AuthGuard } from './guards/auth.guard';
@@ -54,18 +43,7 @@ import { TextareaAutosizeDirective } from './directives/textarea-autosize.direct
     HttpClientModule,
     myRoutes,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MaterialModule,
-    FlexLayoutModule,
-    MatCardModule,
-    MatDividerModule,
-    MatExpansionModule,
-    MatDialogModule,
-    MatIconModule,
-    MatSelectModule,
+    MaterialModule
   ],
   entryComponents: [PostCommentComponent, PostCreateComponent],
   providers: [
