@@ -85,7 +85,6 @@ export class PostDetailComponent implements OnInit, OnDestroy {
   }
 
   like() {
-    console.log(this.authService.getUsername() );
     if (this.authService.getUsername() !== "" && this.authService.getUsername() !== "visitor") {
       const obj = {
         'id': this.id,
@@ -94,24 +93,30 @@ export class PostDetailComponent implements OnInit, OnDestroy {
 
       if (this.liked == false) {
         this.subscription = this.postService.likeRequest(obj).subscribe(res => {
-          if (res['status'] == 200) {
-            this.liked = true;
-            this.count++;
-          }
+          this.addLikeStatus(res);
         });
       } else {
         this.subscription = this.postService.unlikeRequest(obj).subscribe(res => {
-          if (res['status'] == 200) {
-            this.liked = false;
-            this.count--;
-          }
+          this.removeLikeStatus(res);
         });
       }
     } else {
       alert("Please Login In First");
     }
+  }
 
+  removeLikeStatus(res) {
+    if (res['status'] == 200) {
+      this.liked = false;
+      this.count--;
+    }
+  }
 
+  addLikeStatus(res) {
+    if (res['status'] == 200) {
+      this.liked = true;
+      this.count++;
+    }
   }
 
   openCommentDialog(): void {
@@ -121,7 +126,6 @@ export class PostDetailComponent implements OnInit, OnDestroy {
         data: { id: this.id }
       });
       dialogRef.afterClosed().subscribe(result => {
-        //console.log('The dialog was closed');
       });
     } else {
       alert("Please Login In First");
