@@ -116,21 +116,59 @@ async function unlikePost(req, res, next) {
 }
 
 async function getPostList(req, res, next) {
+
+
+   
     // console.log(req.body);
-    const datas = await req.posts_col.find({}).sort({
-        'like': -1
-    }).limit(50).toArray().then(data => {
+    // const datas = await req.posts_col.find({}).sort({
+    //     'likes': -1
+    // }).limit(50).toArray().then(data => {
+    //     // console.log(data)
+    //     return data;
+    // }).catch(err => {
+    //     // console.log(err);
+    //     throw new Error(err);
+    // })
+    // // console.log(datas);
+    // res.json({
+    //     message: "success",
+    //     status: 200,
+    //     data: datas
+    // })
+
+
+    const data = await req.posts_col.aggregate([{
+            $project: {
+                size: {
+                    $size: "$likes"
+                },
+                _id: 1,
+                title: 1,
+                desc: 1,
+                img: 1,
+                category: 1,
+                username: 1,
+                commends: 1,
+                likes: 1
+
+            }
+        },
+        {
+            $sort: {
+                size: -1
+            }
+        }
+    ]).toArray().then(data => {
         // console.log(data)
         return data;
     }).catch(err => {
         // console.log(err);
         throw new Error(err);
     })
-    // console.log(datas);
     res.json({
         message: "success",
         status: 200,
-        data: datas
+        data: data
     })
 }
 
