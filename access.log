@@ -898,3 +898,8 @@
 [0mGET /api/post [32m200 [0m123.723 ms - 50718[0m
 =======
 >>>>>>> d4c6305cf0d7a774694a097bbac3f78aeb1bc8c5
+[0mPOST /api/post/getCategories [32m200 [0m187.763 ms - 166[0m
+[0mPOST /api/post/getCategories [32m200 [0m57.929 ms - 166[0m
+[0mGET /api/post [36m304 [0m422.816 ms - -[0m
+[0mPOST /api/post/getCategories [32m200 [0m55.014 ms - 166[0m
+[0mGET /api/post [36m304 [0m389.786 ms - -[0m
