@@ -120,6 +120,7 @@ async function getPostList(req, res, next) {
 
    
     // console.log(req.body);
+<<<<<<< HEAD
     // const datas = await req.posts_col.find({}).sort({
     //     'likes': -1
     // }).limit(50).toArray().then(data => {
@@ -159,6 +160,11 @@ async function getPostList(req, res, next) {
             }
         }
     ]).toArray().then(data => {
+=======
+    const datas = await req.posts_col.find({}).sort({
+        'like': -1
+    }).limit(10).toArray().then(data => {
+>>>>>>> d4c6305cf0d7a774694a097bbac3f78aeb1bc8c5
         // console.log(data)
         return data;
     }).catch(err => {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [0mPOST /api/post/getCategories [32m200 [0m95.065 ms - 77[0m
 [0mGET /api/post [32m200 [0m421.461 ms - 26415[0m
 [0mPOST /api/categories/get [32m200 [0m40.507 ms - 39[0m
@@ -895,3 +896,5 @@
 [0mGET /api/post [32m200 [0m153.439 ms - 50663[0m
 [0mPOST /api/post/getCategories [32m200 [0m42.268 ms - 166[0m
 [0mGET /api/post [32m200 [0m123.723 ms - 50718[0m
+=======
+>>>>>>> d4c6305cf0d7a774694a097bbac3f78aeb1bc8c5
